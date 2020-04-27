@@ -13,7 +13,7 @@
     "@types/react-native": "^0.62.4",
     "@types/react-router-native": "^5.1.0",
     "@types/redux-actions": "^2.6.1",
-    "mem": "^6.0.1",
+    "mem": "^4.0.0",
     "react": "16.9.0",
     "react-native": "0.61.5",
     "react-redux": "^7.2.0",
