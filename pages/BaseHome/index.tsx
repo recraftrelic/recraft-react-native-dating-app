@@ -1,15 +1,13 @@
 import React from 'react';
 import { RouteComponentProps } from 'react-router-native';
-import { View, ViewStyle, StyleSheet, ImageBackground, Image } from 'react-native';
+import { View, ViewStyle, StyleSheet, ImageBackground, Image, ImageStyle, TextStyle } from 'react-native';
 import { connect } from "react-redux";
-import { setThemeAction } from '../../store/reducers/config';
 import { Dispatch } from 'redux';
 import { AppTheme, AppConstants } from '../../config/DefaultConfig';
 import useConstants from '../../hooks/useConstants';
 import useTheme from "../../hooks/useTheme";
 import ThemedText from '../../components/UI/ThemedText';
 import RoundButton from '../../components/Base/RoundButton';
-import Button from '../../components/Base/ButtonItem';
 
 // @ts-ignore
 const ImagePath = require("../../images/main-banner.jpg");
@@ -38,7 +36,7 @@ const BaseHome: React.FunctionComponent<Props> = ({
     <View style={style.mainContainer}>
       <ImageBackground source={ImagePath} style={{ width: '100%', height: '100%' }} >
         <View style={[style.topContainer,{paddingTop: 70}]}> 
-          <Image source={constants.recraftLogo} style={[style.logoImage ,{width: 120, height: 120}]}/>
+          <Image source={constants.recraftLogo} style={[style.logoImage, {width: 120, height: 120}]}/>
         </View>
         <View style={[style.topContainer,{paddingTop: 20}]}> 
           <ThemedText styleKey="highlightTextColor" style={[style.textStyle, {fontSize: 32}]}>{constants.title}</ThemedText>
@@ -60,7 +58,7 @@ const BaseHome: React.FunctionComponent<Props> = ({
   );
 };
 
-export default connect(({ dispatch}) => ({ dispatch }))(BaseHome);
+export default BaseHome;
 
 interface Style {
   mainContainer : ViewStyle;
@@ -69,7 +67,7 @@ interface Style {
   secondContainer: ViewStyle;
   rightContainer: ViewStyle;
   button: ViewStyle;
-  logoImage: ViewStyle;
+  logoImage: ImageStyle;
   textStyle: TextStyle;
 }
 

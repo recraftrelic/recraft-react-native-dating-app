@@ -1,4 +1,4 @@
-[<p align="center"><img width="150" src="./app-logo.png"></p>](https://github.com/recraftrelic/recraft-react-native-dating-app)
+[<p align="center"><img width="150" src="./images/logo.png"></p>](https://github.com/recraftrelic/recraft-react-native-dating-app)
 
 <h1 align="center">Recraft React native Dating App</h1>
 

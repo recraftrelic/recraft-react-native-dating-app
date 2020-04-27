@@ -16,7 +16,7 @@ export interface AppConstants {
   title: string,
   welcome: string,
   slogan: string,
-  recraftLogo: string,
+  recraftLogo: any,
 }
 
 export interface ApplicationConfig {
