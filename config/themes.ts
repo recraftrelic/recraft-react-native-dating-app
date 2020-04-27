@@ -18,6 +18,11 @@ export const darkTheme: AppTheme = {
     lightBottomColor: "#666666",
     alternateMessageBackgroundColor: '#4682b4',
     appColor: '#fd7c62',
+    facebookColor: '#39579a',
+    googleColor: '#e3384c',
+    twitterColor: '#00acee',
+    inputColor: "#aaaaaa",
+    inputBorderColor: "#dadada",
 }
   
 export const lightTheme: AppTheme = {
@@ -29,6 +34,11 @@ export const lightTheme: AppTheme = {
     lightBottomColor: "#e6e6e6",
     alternateMessageBackgroundColor: '#B0E0E6',
     appColor: '#fd7c62',
+    facebookColor: '#39579a',
+    googleColor: '#e3384c',
+    twitterColor: '#00acee',
+    inputColor: "#aaaaaa",
+    inputBorderColor: "#dadada",
 }
 
 export const themes: ThemesMap = {

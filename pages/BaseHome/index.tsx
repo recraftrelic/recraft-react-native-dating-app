@@ -7,6 +7,9 @@ import useConstants from '../../hooks/useConstants';
 import useTheme from "../../hooks/useTheme";
 import ThemedText from '../../components/UI/ThemedText';
 import RoundButton from '../../components/Base/RoundButton';
+import { Platform } from "react-native";
+
+const isIOS = (): Boolean => Platform.OS == "ios";
 
 // @ts-ignore
 const ImagePath = require("../../images/main-banner.jpg");
@@ -44,13 +47,13 @@ const BaseHome: React.FunctionComponent<Props> = ({
           <ThemedText styleKey="highlightTextColor" style={style.textStyle}>{constants.welcome}</ThemedText>
         </View>
         <View style={style.rightContainer}> 
-          <View style={{width: 270, paddingTop: 50, paddingRight: 60}}>
+          <View style={{width: 280, paddingTop: 50, paddingRight: isIOS() ? 25 : 35}}>
             <ThemedText styleKey="highlightTextColor" style={[style.textStyle, {fontSize: 36, textAlign: 'right'}]}>{constants.slogan}</ThemedText>
           </View>
         </View>
         <View style={style.secondContainer}>
           <RoundButton buttonStyle={style.button} label="Login" buttonColor={theme.backgroundColor} onPress={goToLogin} />
-          <RoundButton buttonStyle={style.button} label="Sign Up" buttonColor={theme.appColor} onPress={goToSignUp} labelStyle={theme.highlightTextColor} />
+          <RoundButton buttonStyle={style.button} label="Sign Up" buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} />
         </View>
       </ImageBackground>
     </View>
@@ -90,22 +93,26 @@ const style: Style = StyleSheet.create<Style>({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: "center",
-    paddingLeft: 10,
-    paddingRight: 10,
+    paddingLeft: 50,
+    paddingRight: 50,
   },
   secondContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: "center",
+    paddingLeft: 50,
+    paddingRight: 50,
   },
   rightContainer: {
     flex: 1,
     flexDirection: 'row-reverse',
     alignItems: 'flex-end',
+    paddingLeft: 50,
+    paddingRight: 50,
   },
   button: {
     marginTop: 10,
-    minWidth: 300,
+    minWidth: 270,
   },
   textStyle: {
     fontSize: 16, 

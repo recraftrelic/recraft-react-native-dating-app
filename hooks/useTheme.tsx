@@ -1,4 +1,3 @@
-import React, { useContext } from 'react';
 import { AppTheme, AppConstants } from '../config/DefaultConfig';
 import useConstants from './useConstants';
 import { themes } from '../config/themes';

@@ -7,6 +7,7 @@ import BaseHome from '../pages/BaseHome';
 import { ApplicationConfig } from '../config/DefaultConfig';
 import ConfigContext from '../config/AppConfigProvider';
 import ThemedView from '../components/UI/ThemedView';
+import Login from '../pages/Login';
 
 interface Props {
   configReducer: ApplicationConfig
@@ -15,7 +16,6 @@ interface Props {
 const Router: React.FunctionComponent<Props> = ({
   configReducer
 }: Props) => {
-  console.log(configReducer.theme)
   return (
     <ConfigContext.Provider value={configReducer}>
       <ThemedView style={style.container}>
@@ -23,6 +23,7 @@ const Router: React.FunctionComponent<Props> = ({
           <BackHandlerHOC>
             <Switch>
               <Route exact path="/" component={BaseHome} />
+              <Route exact path="/login/" component={Login} />
             </Switch>
           </BackHandlerHOC>
         </NativeRouter>
