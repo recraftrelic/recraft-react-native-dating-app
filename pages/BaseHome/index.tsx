@@ -1,7 +1,6 @@
 import React from 'react';
 import { RouteComponentProps } from 'react-router-native';
 import { View, ViewStyle, StyleSheet, ImageBackground, Image, ImageStyle, TextStyle } from 'react-native';
-import { connect } from "react-redux";
 import { Dispatch } from 'redux';
 import { AppTheme, AppConstants } from '../../config/DefaultConfig';
 import useConstants from '../../hooks/useConstants';
