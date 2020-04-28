@@ -77,6 +77,10 @@ const Login: React.FunctionComponent<Props> = ({
     }
   }
 
+  const goToForget = () => {
+    history.push('/forget')
+  }
+
   return (
     <View style={{flex: 1, flexDirection:'column'}}>
     <ScrollView>
@@ -136,7 +140,9 @@ const Login: React.FunctionComponent<Props> = ({
           <ErrorText
             errors={errors.password}
           /> 
-          <ThemedText style={[style.forgotPassword, {fontWeight: 'bold', textAlign: 'right', alignSelf: 'flex-end'}]} styleKey="appColor">{constants.labelForget}</ThemedText>
+          <TouchableOpacity onPress={goToForget}>
+            <ThemedText style={[style.forgotPassword, {fontWeight: 'bold', textAlign: 'right', alignSelf: 'flex-end'}]} styleKey="appColor">{constants.labelForget}</ThemedText>
+          </TouchableOpacity>
           <RoundButton buttonStyle={{minWidth: 230, marginTop: 30}} label={constants.labelSignin} buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} onPress={goToHome} />
           <View style={style.childContainer}>
             <ThemedText style={style.forgotPassword} styleKey="textColor">{constants.labelCheckAcc}</ThemedText>
