@@ -1,4 +1,5 @@
 import { ThemeKey } from "./themes";
+import { LanguageKey } from "./languages";
 
 export interface AppTheme {
   backgroundColor: string,
@@ -9,40 +10,34 @@ export interface AppTheme {
   lightBottomColor: string,
   alternateMessageBackgroundColor: string,
   appColor: string,
+  facebookColor: string,
+  googleColor: string,
+  twitterColor: string,
+  inputColor: string,
+  inputBorderColor: string,
 }
 
 export interface AppConstants {
   selectedTheme: ThemeKey,
+  selectedLanguage: LanguageKey,
   title: string,
   welcome: string,
   slogan: string,
   recraftLogo: any,
+  labelLogin: string,
+  labelCheckAcc: string,
+  labelChoice: string,
+  labelSubmit: string,
+  namePlaceholder: string,
+  emailPlaceholder: string,
+  userPlaceholder: string,
+  passPlaceholder: string,
+  labelForget: string,
+  labelSignupWith: string,
 }
 
 export interface ApplicationConfig {
   constants?: AppConstants
-}
-
-export const darkTheme: AppTheme = {
-  backgroundColor: "#000000",
-  highlightColor: "grey",
-  highlightTextColor: "#ffffff",
-  textColor: "#fff",
-  lightTextColor: "#b3b3b3",
-  lightBottomColor: "#666666",
-  alternateMessageBackgroundColor: '#4682b4',
-  appColor: '#fd7c62',
-}
-
-export const lightTheme: AppTheme = {
-  backgroundColor: "#ffffff",
-  highlightColor: "green",
-  highlightTextColor: "#ffffff",
-  textColor: "#333",
-  lightTextColor: "#b3b3b3",
-  lightBottomColor: "#e6e6e6",
-  alternateMessageBackgroundColor: '#B0E0E6',
-  appColor: '#fd7c62',
 }
 
 // @ts-ignore
@@ -51,9 +46,20 @@ const Logo = require("../images/logo.png")
 export const defaultConfig: ApplicationConfig = {
   constants: {
     selectedTheme: ThemeKey.light,
+    selectedLanguage: LanguageKey.en,
     title: "RECRAFT DATING",
     welcome: 'Welcome Back',
     slogan: "Meet and share every moments",
     recraftLogo: Logo,
+    labelLogin: "Login Account",
+    labelCheckAcc: "Don't have an account?",
+    labelChoice: "Or Login With",
+    labelSignupWith: "Sign up with",
+    labelSubmit: "SUBMIT",
+    namePlaceholder: "Enter Name",
+    emailPlaceholder: "Enter Email",
+    userPlaceholder: "Username",
+    passPlaceholder: "Password",
+    labelForget: "Forget password?",
   }
 }
