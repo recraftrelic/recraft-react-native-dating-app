@@ -34,9 +34,9 @@ const ForgetPassword: React.FunctionComponent<Props> = ({
 
   return (
     <>
-    <View style={{flex: 1, flexDirection:'column'}}>
+    <View style={style.mainContainer}>
         <ImageBackground source={ImagePath} style={{ width: '100%', height: 550,}} >
-          <TouchableOpacity style={{flexDirection: 'row', justifyContent: "space-between", paddingLeft: 20}} onPress={backButton}>
+          <TouchableOpacity style={style.backContainer} onPress={backButton}>
             <View style={style.leftContainer}>
               <MaterialIcon name="chevron-left-circle-outline" size={30} color={theme.highlightTextColor} style={style.backIcon}/>
             </View>
@@ -45,7 +45,7 @@ const ForgetPassword: React.FunctionComponent<Props> = ({
             </View>
           </TouchableOpacity>
           <View style={[style.topContainer, {marginTop: 120, marginBottom: 10}]}>
-            <View style={{width: 100, height: 100, alignContent: 'center', paddingLeft: 25, justifyContent: 'center', borderRadius: 50, backgroundColor: theme.backgroundColor}}>
+            <View style={[style.forgetContainer, {backgroundColor: theme.backgroundColor}]}>
               <Image source={forget} style={[style.logoImage, {width: 50, height: 50}]}/>
             </View>
           </View>
@@ -59,8 +59,8 @@ const ForgetPassword: React.FunctionComponent<Props> = ({
           </View>
         </ImageBackground>
     </View>
-    <View style={{ flex: 1, alignItems: 'flex-end', flexDirection: 'row'}}>
-      <View style={{flex: 1, justifyContent: 'flex-end', marginBottom: 20}}>
+    <View style={style.bottomContainer}>
+      <View style={{flex: 1, justifyContent: 'flex-end'}}>
         <View style={style.childContainer}>
           <View style={[style.iconContainer, { backgroundColor: theme.facebookColor }]}>
             <Icon name="facebook" size={30} color={theme.highlightTextColor} style={style.Icon} />
@@ -82,11 +82,14 @@ export default ForgetPassword;
 
 interface Style {
   container: ViewStyle;
+  mainContainer: ViewStyle;
   topContainer: ViewStyle;
   childContainer: ViewStyle;
   leftContainer: ViewStyle;
   rightContainer: ViewStyle;
   bottomContainer: ViewStyle;
+  forgetContainer: ViewStyle;
+  backContainer: ViewStyle;
   inputContainer: TextStyle;
   inputLabel: TextStyle;
   forgotPassword: TextStyle;
@@ -111,6 +114,10 @@ const style: Style = StyleSheet.create<Style>({
     justifyContent: "center",
     alignItems: 'center',
   },
+  mainContainer: {
+    flex: 1, 
+    flexDirection:'column'
+  },
   topContainer: {
     flexDirection: 'row',
     justifyContent: "center",
@@ -120,13 +127,15 @@ const style: Style = StyleSheet.create<Style>({
     marginTop: 80,
     marginBottom: 20,
   },
-  bottomContainer: {
-    flexDirection: 'row',
-    justifyContent: "center",
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingTop: 30,
-    paddingBottom: 30,
+  bottomContainer: { 
+    flex: 1, 
+    alignItems: 'flex-end', 
+    flexDirection: 'row'
+  },
+  backContainer: {
+    flexDirection: 'row', 
+    justifyContent: "space-between", 
+    paddingLeft: 20
   },
   inputLabel: {
     width: "100%",
@@ -153,6 +162,14 @@ const style: Style = StyleSheet.create<Style>({
     alignSelf: 'flex-start',
     alignContent: 'flex-start',
     alignItems: 'flex-start',
+  },
+  forgetContainer: {
+    width: 100, 
+    height: 100, 
+    alignContent: 'center', 
+    paddingLeft: 25, 
+    justifyContent: 'center', 
+    borderRadius: 50,
   },
   inputContainer: {
     height: 40,
