@@ -1,7 +1,7 @@
 import React from 'react';
 import { RouteComponentProps } from 'react-router-native';
 import { Dispatch } from 'redux';
-import { View, ViewStyle, StyleSheet, TextStyle, TextInput, ScrollView, TouchableOpacity, Image, ImageStyle } from 'react-native';
+import { View, ViewStyle, StyleSheet, TextStyle, TextInput, ScrollView, TouchableOpacity, Image, ImageStyle, ImageBackground } from 'react-native';
 import { AppConstants, AppTheme } from '../../config/DefaultConfig';
 import ThemedText from '../../components/UI/ThemedText';
 import useConstants from '../../hooks/useConstants';
@@ -10,10 +10,12 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import useTheme from '../../hooks/useTheme';
-
 import { Platform } from "react-native";
 
 const isIOS = (): Boolean => Platform.OS == "ios";
+
+// @ts-ignore
+const ImagePath = require("../../images/dual-tone.png");
 
 interface Props extends RouteComponentProps {
   dispatch: Dispatch,
@@ -42,7 +44,7 @@ const Login: React.FunctionComponent<Props> = ({
     <>
     <View style={{flex: 1, flexDirection:'column'}}>
     <ScrollView>
-      <View style={{flex:1, backgroundColor: theme.appColor}}>
+      <ImageBackground source={ImagePath} style={{ width: '100%', height: '78%',}} >
         <TouchableOpacity style={{flexDirection: 'row', justifyContent: "space-between", paddingLeft: 20}} onPress={backButton}>
           <View style={style.leftContainer}>
             <MaterialIcon name="chevron-left-circle-outline" size={30} color={theme.highlightTextColor} style={style.backIcon}/>
@@ -51,15 +53,15 @@ const Login: React.FunctionComponent<Props> = ({
             <ThemedText styleKey="highlightTextColor" style={style.textStyle}>Back</ThemedText>
           </View>
         </TouchableOpacity>
-        <View style={[style.topContainer, {marginTop: 40, marginBottom: 10}]}>
+        <View style={[style.topContainer, {marginTop: 80, marginBottom: 10}]}>
           <Image source={constants.recraftLogo} style={[style.logoImage, {width: 150, height: 150}]}/>
         </View>
         <View style={[style.topContainer, {marginTop: 0, marginBottom: 30}]}>
           <ThemedText styleKey="highlightTextColor" style={[style.textStyle, {fontSize: 32, textTransform: 'capitalize'}]}>{constants.title}</ThemedText>
         </View>
-      </View>
+      </ImageBackground>
       <View style={{flex:1, backgroundColor: theme.backgroundColor}}>
-        <View style={[style.container, {backgroundColor: theme.backgroundColor, shadowOffset: { width: 0, height: 8 },shadowOpacity: 0.2,elevation: 6, marginLeft:50, marginRight: 50, borderRadius: 40, paddingBottom: 70}]}>
+        <View style={[style.container, {backgroundColor: theme.backgroundColor, position: 'relative', bottom : 340, shadowOffset: { width: 0, height: 8 },shadowOpacity: 0.2,elevation: 6, marginLeft:50, marginRight: 50, borderRadius: 40, paddingBottom: 70}]}>
           <View style={[style.topContainer, {marginTop: 20}]}>
             <ThemedText styleKey="textColor" style={style.textStyle}>{constants.labelLogin}</ThemedText>
           </View>
@@ -94,6 +96,7 @@ const Login: React.FunctionComponent<Props> = ({
             <ThemedText style={style.forgotPassword} styleKey="textColor">{constants.labelCheckAcc}</ThemedText>
           </View>
         </View>
+        <View style={{position: 'relative', bottom : 340,}}>
         <RoundButton buttonStyle={{minWidth: 300, marginTop: 30}} label="Sign in with" buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} onPress={goToHome} />
         <View style={style.childContainer}>
           <View style={[style.iconContainer, { backgroundColor: theme.facebookColor }]}>
@@ -105,6 +108,7 @@ const Login: React.FunctionComponent<Props> = ({
           <View style={[style.iconContainer, { backgroundColor: theme.twitterColor }]}>
             <Icon name="twitter" size={30} color={theme.highlightTextColor} style={style.Icon} />
           </View>
+        </View>
         </View>
       </View>
       </ScrollView>
