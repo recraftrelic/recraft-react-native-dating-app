@@ -8,6 +8,7 @@ import { ApplicationConfig } from '../config/DefaultConfig';
 import ConfigContext from '../config/AppConfigProvider';
 import ThemedView from '../components/UI/ThemedView';
 import Login from '../pages/Login';
+import Signup from '../pages/Signup';
 
 interface Props {
   configReducer: ApplicationConfig
@@ -24,6 +25,7 @@ const Router: React.FunctionComponent<Props> = ({
             <Switch>
               <Route exact path="/" component={BaseHome} />
               <Route exact path="/login/" component={Login} />
+              <Route exact path="/signup/" component={Signup} />
             </Switch>
           </BackHandlerHOC>
         </NativeRouter>

@@ -23,6 +23,7 @@ export const darkTheme: AppTheme = {
     twitterColor: '#00acee',
     inputColor: "#aaaaaa",
     inputBorderColor: "#dadada",
+    errorColor: '#FF0000',
 }
   
 export const lightTheme: AppTheme = {
@@ -39,6 +40,7 @@ export const lightTheme: AppTheme = {
     twitterColor: '#00acee',
     inputColor: "#aaaaaa",
     inputBorderColor: "#dadada",
+    errorColor: '#FF0000',
 }
 
 export const themes: ThemesMap = {
