@@ -33,8 +33,8 @@ const ForgetPassword: React.FunctionComponent<Props> = ({
   }
 
   return (
+    <>
     <View style={{flex: 1, flexDirection:'column'}}>
-      <ScrollView>
         <ImageBackground source={ImagePath} style={{ width: '100%', height: 550,}} >
           <TouchableOpacity style={{flexDirection: 'row', justifyContent: "space-between", paddingLeft: 20}} onPress={backButton}>
             <View style={style.leftContainer}>
@@ -58,21 +58,23 @@ const ForgetPassword: React.FunctionComponent<Props> = ({
             <ThemedText style={style.forgotPassword} styleKey="highlightTextColor">{constants.newAccount}</ThemedText>
           </View>
         </ImageBackground>
-        <View style={{flex:1, backgroundColor: theme.backgroundColor, marginTop: 200}}>
-            <View style={style.childContainer}>
-            <View style={[style.iconContainer, { backgroundColor: theme.facebookColor }]}>
-                <Icon name="facebook" size={30} color={theme.highlightTextColor} style={style.Icon} />
-            </View>
-            <View style={[style.iconContainer, { backgroundColor: theme.googleColor }]}>
-                <Icon name="google" size={30} color={theme.highlightTextColor} style={style.Icon} />
-            </View>
-            <View style={[style.iconContainer, { backgroundColor: theme.twitterColor }]}>
-                <Icon name="twitter" size={30} color={theme.highlightTextColor} style={style.Icon} />
-            </View>
-            </View>
-        </View>
-      </ScrollView>
     </View>
+    <View style={{ flex: 1, alignItems: 'flex-end', flexDirection: 'row'}}>
+      <View style={{flex: 1, justifyContent: 'flex-end', marginBottom: 20}}>
+        <View style={style.childContainer}>
+          <View style={[style.iconContainer, { backgroundColor: theme.facebookColor }]}>
+            <Icon name="facebook" size={30} color={theme.highlightTextColor} style={style.Icon} />
+          </View>
+          <View style={[style.iconContainer, { backgroundColor: theme.googleColor }]}>
+            <Icon name="google" size={30} color={theme.highlightTextColor} style={style.Icon} />
+          </View>
+          <View style={[style.iconContainer, { backgroundColor: theme.twitterColor }]}>
+            <Icon name="twitter" size={30} color={theme.highlightTextColor} style={style.Icon} />
+          </View>
+        </View>
+      </View>
+    </View>
+    </>
   )
 };
 
