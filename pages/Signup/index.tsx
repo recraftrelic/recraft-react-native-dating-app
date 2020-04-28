@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { RouteComponentProps } from 'react-router-native';
 import { Dispatch } from 'redux';
 import { View, ViewStyle, StyleSheet, TextStyle, TextInput, ScrollView, TouchableOpacity, Image, ImageStyle, ImageBackground, Platform } from 'react-native';
@@ -9,6 +9,7 @@ import RoundButton from '../../components/Base/RoundButton';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Fontisto from 'react-native-vector-icons/Fontisto';
 import useTheme from '../../hooks/useTheme';
 import microValidator from 'micro-validator';
 import { ValidationError } from '../../config/validation';
@@ -16,49 +17,83 @@ import ErrorText from '../../components/Base/ErrorText';
 
 interface LoginField {
   username?: string;
+  email?: string;
+  phone?: string;
   password?: string;
+  confirmPass?: string;
 }
 
 const isIOS = (): Boolean => Platform.OS == "ios";
 
 // @ts-ignore
 const ImagePath = require("../../images/dual-tone.png");
+const confirmImage = require("../../images/confirm.png");
 
 interface Props extends RouteComponentProps {
   dispatch: Dispatch,
   history: any
 }
 
-const Login: React.FunctionComponent<Props> = ({
+const Signup: React.FunctionComponent<Props> = ({
   history
 }: Props) => {
   const constants: AppConstants = useConstants();
   const theme: AppTheme = useTheme();
+  const [selected,setSelected] = useState<Boolean>(false);
 
   const validate = (data: LoginField): ValidationError => {
     const errors = microValidator.validate({
         username: {
             required: {
-                errorMsg: constants.loginValidation.username
+                errorMsg: constants.signupValidation.username
+            }
+        },
+        email: {
+            required: {
+                errorMsg: constants.signupValidation.email
+            },
+            email: {
+                errorMsg: constants.signupValidation.validEmail
+            }
+        },
+        phone: {
+            required: {
+                errorMsg: constants.signupValidation.phone
+            },
+            regex: {
+              pattern: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im,
+              errorMsg: constants.signupValidation.validPhone
             }
         },
         password: {
             required: {
-                errorMsg: constants.loginValidation.password
+                errorMsg: constants.signupValidation.password
             },
             length: {
                 min: 6,
                 max: 12,
-                errorMsg: constants.loginValidation.passwordLength
+                errorMsg: constants.signupValidation.passwordLength
             }
         },
-    },data)
+        confirmPass: {
+            required: {
+              errorMsg: constants.signupValidation.confirmPassword
+            },
+            equals: {
+              to: password, // you can pass anything here for e.g. variables
+              errorMsg: constants.signupValidation.checkPassword
+            }
+        }
+    }, data)
     
     return errors
   }
 
   const [username,onChangeUsername] = useState<string>("")
+  const [email,onChangeEmail] = useState<string>("")
+  const [phone,onChangePhone] = useState<string>("")
   const [password,onChangePassword] = useState<string>("")
+  const [confirmPass,onChangeConfirm] = useState<string>(password)
   const [errors,setErrors] = useState<ValidationError>({})
 
   const backButton = () => {
@@ -66,7 +101,7 @@ const Login: React.FunctionComponent<Props> = ({
   }
 
   const goToHome = () => {
-    const errors: ValidationError = validate({username: username,password: password})
+    const errors: ValidationError = validate({username: username,email: email,phone: phone,password: password,confirmPass: confirmPass})
 
     if(!Object.keys(errors).length)
     {
@@ -78,9 +113,10 @@ const Login: React.FunctionComponent<Props> = ({
   }
 
   return (
+    <>
     <View style={{flex: 1, flexDirection:'column'}}>
     <ScrollView>
-      <ImageBackground source={ImagePath} style={{ width: '100%', height: '78%',}} >
+      <ImageBackground source={ImagePath} style={{ width: '100%', height: isIOS() ? '78%' :'82%',}} >
         <TouchableOpacity style={{flexDirection: 'row', justifyContent: "space-between", paddingLeft: 20}} onPress={backButton}>
           <View style={style.leftContainer}>
             <MaterialIcon name="chevron-left-circle-outline" size={30} color={theme.highlightTextColor} style={style.backIcon}/>
@@ -89,18 +125,15 @@ const Login: React.FunctionComponent<Props> = ({
             <ThemedText styleKey="highlightTextColor" style={style.textStyle}>{constants.backText}</ThemedText>
           </View>
         </TouchableOpacity>
-        <View style={[style.topContainer, {marginTop: 80, marginBottom: 10}]}>
-          <Image source={constants.recraftLogo} style={[style.logoImage, {width: 150, height: 150}]}/>
+        <View style={[style.topContainer, {marginTop: 40, marginBottom: 10}]}>
+          <Image source={constants.recraftLogo} style={[style.logoImage, {width: 120, height: 120}]}/>
         </View>
         <View style={[style.topContainer, {marginTop: 0, marginBottom: 30}]}>
-          <ThemedText styleKey="highlightTextColor" style={[style.textStyle, {fontSize: 32, textTransform: 'capitalize'}]}>{constants.title}</ThemedText>
+          <ThemedText styleKey="highlightTextColor" style={[style.textStyle, {fontSize: 28, textTransform: 'capitalize'}]}>{constants.title}</ThemedText>
         </View>
       </ImageBackground>
       <View style={{flex:1, backgroundColor: theme.backgroundColor}}>
-        <View style={[style.container, {backgroundColor: theme.backgroundColor, position: 'relative', bottom : 340, shadowOffset: { width: 0, height: 8 },shadowOpacity: 0.2,elevation: 6, marginLeft:50, marginRight: 50, borderRadius: 40, paddingBottom: 70}]}>
-          <View style={[style.topContainer, {marginTop: 20}]}>
-            <ThemedText styleKey="textColor" style={style.textStyle}>{constants.labelLogin}</ThemedText>
-          </View>
+        <View style={[style.container, {backgroundColor: theme.backgroundColor, position: 'relative', bottom: isIOS() ? 350 : 370, shadowOffset: { width: 0, height: 8 },shadowOpacity: 0.2,elevation: 6, marginLeft:50, marginRight: 50, borderRadius: 40, paddingBottom: 50}]}>
           <View style={[style.searchContainer, { borderBottomColor: theme.textColor }]}>
             <View style={style.iconStyle}>
               <AntDesign name="user" size={15} color={theme.textColor} />
@@ -115,9 +148,49 @@ const Login: React.FunctionComponent<Props> = ({
               />
             </View>
           </View>
-          <ErrorText
-            errors={errors.username}
-          /> 
+          <View style={{flex: 1, alignSelf: 'flex-start'}}>
+            <ErrorText
+              errors={errors.username}
+            /> 
+          </View>
+          <View style={[style.searchContainer, { borderBottomColor: theme.textColor }]}>
+            <View style={style.iconStyle}>
+              <Fontisto name="email" size={15} color={theme.textColor} />
+            </View>
+            <View style={style.textContainer}>
+              <TextInput
+                placeholder={constants.emailPlaceholder}
+                placeholderTextColor={theme.textColor}
+                onChangeText={onChangeEmail}
+                value={email}
+                style={{ color: theme.textColor, paddingBottom: isIOS() ? 0 : 7, height: isIOS() ? 15 : 35 }}
+              />
+            </View>
+          </View>
+          <View style={{flex: 1, alignSelf: 'flex-start'}}>
+            <ErrorText
+              errors={errors.email}
+            /> 
+          </View>
+          <View style={[style.searchContainer, { borderBottomColor: theme.textColor }]}>
+            <View style={style.iconStyle}>
+              <AntDesign name="mobile1" size={15} color={theme.textColor} />
+            </View>
+            <View style={style.textContainer}>
+              <TextInput
+                placeholder={constants.phonePlaceholder}
+                placeholderTextColor={theme.textColor}
+                onChangeText={onChangePhone}
+                value={phone}
+                style={{ color: theme.textColor, paddingBottom: isIOS() ? 0 : 7, height: isIOS() ? 15 : 35 }}
+              />
+            </View>
+          </View>
+          <View style={{flex: 1, alignSelf: 'flex-start'}}>
+            <ErrorText
+              errors={errors.phone}
+            /> 
+          </View>
           <View style={[style.searchContainer, { borderBottomColor: theme.textColor }]}>
             <View style={style.iconStyle}>
               <AntDesign name="key" size={15} color={theme.textColor} style={{transform: [{ rotate: '80deg' }]}} />
@@ -133,17 +206,47 @@ const Login: React.FunctionComponent<Props> = ({
               />
             </View>
           </View>
-          <ErrorText
-            errors={errors.password}
-          /> 
-          <ThemedText style={[style.forgotPassword, {fontWeight: 'bold', textAlign: 'right', alignSelf: 'flex-end'}]} styleKey="appColor">{constants.labelForget}</ThemedText>
-          <RoundButton buttonStyle={{minWidth: 230, marginTop: 30}} label={constants.labelSignin} buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} onPress={goToHome} />
+          <View style={{flex: 1, alignSelf: 'flex-start'}}>
+            <ErrorText
+              errors={errors.password}
+            /> 
+          </View>
+          <View style={[style.searchContainer, { borderBottomColor: theme.textColor }]}>
+            <View style={style.iconStyle}>
+              <Image source={confirmImage} style={{width: 12, height: 15}}/>
+            </View>
+            <View style={style.textContainer}>
+              <TextInput
+                placeholder={constants.confirmPlaceholder}
+                placeholderTextColor={theme.textColor}
+                onChangeText={onChangeConfirm}
+                value={confirmPass}
+                style={{ color: theme.textColor, paddingBottom: isIOS() ? 0 : 7, height: isIOS() ? 15 : 35 }}
+                secureTextEntry={true}
+              />
+            </View>
+          </View>
+          <View style={{flex: 1, alignSelf: 'flex-start'}}>
+            <ErrorText
+              errors={errors.confirmPass}
+            /> 
+          </View>
+          <View style={[style.searchContainer, { borderBottomWidth: 0, paddingTop: 10}]}>
+            <View style={style.iconStyle}>
+              <TouchableOpacity onPress={() => {setSelected(!selected)}}>
+                <MaterialIcon name={selected ? "checkbox-marked" : "checkbox-blank-outline"} size={15} color={selected ? theme.appColor: theme.textColor} style={{paddingTop: isIOS() ? 2 : 0}}/>
+              </TouchableOpacity>
+            </View>
+            <View style={style.textContainer}>
+              <ThemedText style={{fontSize: 10}} styleKey="textColor">{constants.checkText}</ThemedText>
+            </View>
+          </View>
+          <RoundButton buttonStyle={{minWidth: 230, marginTop: 40}} label={constants.labelSignup} buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} onPress={goToHome} />
           <View style={style.childContainer}>
-            <ThemedText style={style.forgotPassword} styleKey="textColor">{constants.labelCheckAcc}</ThemedText>
+            <ThemedText style={style.forgotPassword} styleKey="textColor">{constants.labelSignupOr}</ThemedText>
           </View>
         </View>
-        <View style={{position: 'relative', bottom : 340,}}>
-        <RoundButton buttonStyle={{minWidth: 300, marginTop: 30}} label={constants.labelSignupWith} buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} onPress={goToHome} />
+        <View style={{position: 'relative', bottom: isIOS() ? 340 : 370,}}>
         <View style={style.childContainer}>
           <View style={[style.iconContainer, { backgroundColor: theme.facebookColor }]}>
             <Icon name="facebook" size={30} color={theme.highlightTextColor} style={style.Icon} />
@@ -159,10 +262,11 @@ const Login: React.FunctionComponent<Props> = ({
       </View>
       </ScrollView>
     </View>
+    </>
   )
 };
 
-export default Login;
+export default Signup;
 
 interface Style {
   container: ViewStyle;

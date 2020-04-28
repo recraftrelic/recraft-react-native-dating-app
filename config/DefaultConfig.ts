@@ -15,6 +15,7 @@ export interface AppTheme {
   twitterColor: string,
   inputColor: string,
   inputBorderColor: string,
+  errorColor: string,
 }
 
 export interface AppConstants {
@@ -24,16 +25,41 @@ export interface AppConstants {
   welcome: string,
   slogan: string,
   recraftLogo: any,
+  backText: string,
   labelLogin: string,
   labelCheckAcc: string,
   labelChoice: string,
-  labelSubmit: string,
-  namePlaceholder: string,
+  labelSignin: string,
+  labelSignup: string,
+  phonePlaceholder: string,
   emailPlaceholder: string,
   userPlaceholder: string,
   passPlaceholder: string,
+  confirmPlaceholder: string,
   labelForget: string,
+  labelSignupOr: string,
   labelSignupWith: string,
+  checkText: string,
+  loginValidation: loginValidation,
+  signupValidation: signupValidation,
+}
+
+export interface loginValidation {
+  username: string,
+  password: string,
+  passwordLength: string,
+}
+
+export interface signupValidation {
+  username: string,
+  email: string,
+  validEmail: string,
+  phone: string,
+  validPhone: string,
+  password: string,
+  passwordLength: string,
+  confirmPassword: string,
+  checkPassword: string,
 }
 
 export interface ApplicationConfig {
@@ -51,15 +77,36 @@ export const defaultConfig: ApplicationConfig = {
     welcome: 'Welcome Back',
     slogan: "Meet and share every moments",
     recraftLogo: Logo,
+    backText: "Back",
     labelLogin: "Login Account",
     labelCheckAcc: "Don't have an account?",
     labelChoice: "Or Login With",
     labelSignupWith: "Sign up with",
-    labelSubmit: "SUBMIT",
-    namePlaceholder: "Enter Name",
-    emailPlaceholder: "Enter Email",
+    labelSignupOr: "or Sign Up with",
+    labelSignin: "Sign in",
+    labelSignup: "Sign Up",
+    phonePlaceholder: "Phone",
+    emailPlaceholder: "Email",
     userPlaceholder: "Username",
     passPlaceholder: "Password",
+    confirmPlaceholder: "Confirm Password",
     labelForget: "Forget password?",
-  }
+    checkText: "I agree Terms of use & Privacy Policy",
+    loginValidation : {
+      username: `Username is required`,
+      password: `Password is required`,
+      passwordLength: 'Password length between 6 and 12',
+    },
+    signupValidation : {
+      username: `Username is required`,
+      email: `Email is required`,
+      validEmail: 'Please enter a valid email',
+      phone: `Phone No. is required`,
+      validPhone: 'Please enter a valid phone no.',
+      password: `Password is required`,
+      passwordLength: 'Password length between 6 and 12',
+      confirmPassword: 'Confirm Password is required',
+      checkPassword: 'Confirm password should be same',
+    },
+  },
 }

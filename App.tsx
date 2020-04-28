@@ -5,9 +5,11 @@ import store from './store';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Fontisto from 'react-native-vector-icons/Fontisto';
 Icon.loadFont()
 MaterialIcon.loadFont()
 AntDesign.loadFont()
+Fontisto.loadFont()
 
 const App: React.FunctionComponent = () => {
     return (
