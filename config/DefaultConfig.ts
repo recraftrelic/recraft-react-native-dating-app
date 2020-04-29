@@ -16,12 +16,14 @@ export interface AppTheme {
   inputColor: string,
   inputBorderColor: string,
   errorColor: string,
+  forgetColor: string,
 }
 
 export interface AppConstants {
   selectedTheme: ThemeKey,
   selectedLanguage: LanguageKey,
   title: string,
+  forgetText: string,
   welcome: string,
   slogan: string,
   recraftLogo: any,
@@ -40,6 +42,9 @@ export interface AppConstants {
   labelSignupOr: string,
   labelSignupWith: string,
   checkText: string,
+  choiceOne: string,
+  resetPass: string,
+  newAccount: string,
   loginValidation: loginValidation,
   signupValidation: signupValidation,
 }
@@ -74,6 +79,7 @@ export const defaultConfig: ApplicationConfig = {
     selectedTheme: ThemeKey.light,
     selectedLanguage: LanguageKey.en,
     title: "RECRAFT DATING",
+    forgetText: "Forget Password",
     welcome: 'Welcome Back',
     slogan: "Meet and share every moments",
     recraftLogo: Logo,
@@ -92,6 +98,9 @@ export const defaultConfig: ApplicationConfig = {
     confirmPlaceholder: "Confirm Password",
     labelForget: "Forget password?",
     checkText: "I agree Terms of use & Privacy Policy",
+    choiceOne: "Email or Phone",
+    resetPass: "Reset Password",
+    newAccount: "or Create New Account",
     loginValidation : {
       username: `Username is required`,
       password: `Password is required`,
