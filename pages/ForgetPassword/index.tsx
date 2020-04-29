@@ -44,12 +44,12 @@ const ForgetPassword: React.FunctionComponent<Props> = ({
               <ThemedText styleKey="highlightTextColor" style={style.textStyle}>{constants.backText}</ThemedText>
             </View>
           </TouchableOpacity>
-          <View style={[style.topContainer, {marginTop: 120, marginBottom: 10}]}>
+          <View style={[style.topContainer, style.extraStyle]}>
             <View style={[style.forgetContainer, {backgroundColor: theme.backgroundColor}]}>
               <Image source={forget} style={[style.logoImage, {width: 50, height: 50}]}/>
             </View>
           </View>
-          <View style={[style.topContainer, {marginTop: 0, marginBottom: 30}]}>
+          <View style={[style.topContainer, style.nexStyle]}>
             <ThemedText styleKey="highlightTextColor" style={[style.textStyle, {fontSize: 32, textTransform: 'capitalize'}]}>{constants.forgetText}</ThemedText>
           </View>
           <RoundButton buttonStyle={style.inputLabel} label={constants.choiceOne} buttonColor={theme.forgetColor} labelStyle={theme.highlightTextColor} />
@@ -101,6 +101,8 @@ interface Style {
   searchContainer: ViewStyle;
   iconStyle: ViewStyle;
   textContainer: ViewStyle;
+  extraStyle: ViewStyle;
+  nexStyle: ViewStyle;
 }
 
 const style: Style = StyleSheet.create<Style>({
@@ -210,5 +212,13 @@ const style: Style = StyleSheet.create<Style>({
   iconStyle: {
     flex: 1,
     alignItems: "flex-start"
-  }
+  },
+  extraStyle: {
+    marginTop: 120, 
+    marginBottom: 10
+  },
+  nexStyle: {
+    marginTop: 0, 
+    marginBottom: 30
+  },
 });
