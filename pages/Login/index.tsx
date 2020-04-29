@@ -1,18 +1,17 @@
 import React, {useState} from 'react';
 import { RouteComponentProps } from 'react-router-native';
 import { Dispatch } from 'redux';
-import { View, ViewStyle, StyleSheet, TextStyle, TextInput, ScrollView, TouchableOpacity, Image, ImageStyle, ImageBackground, Platform } from 'react-native';
+import { View, ViewStyle, StyleSheet, TextStyle, ScrollView, TouchableOpacity, Image, ImageStyle, ImageBackground, Platform } from 'react-native';
 import { AppConstants, AppTheme } from '../../config/DefaultConfig';
 import ThemedText from '../../components/UI/ThemedText';
 import useConstants from '../../hooks/useConstants';
 import RoundButton from '../../components/Base/RoundButton';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import useTheme from '../../hooks/useTheme';
 import microValidator from 'micro-validator';
 import { ValidationError } from '../../config/validation';
-import ErrorText from '../../components/Base/ErrorText';
+import Input from '../../components/Base/Input';
 
 interface LoginField {
   username?: string;
@@ -37,21 +36,21 @@ const Login: React.FunctionComponent<Props> = ({
 
   const validate = (data: LoginField): ValidationError => {
     const errors = microValidator.validate({
-        username: {
-            required: {
-                errorMsg: constants.loginValidation.username
-            }
-        },
-        password: {
-            required: {
-                errorMsg: constants.loginValidation.password
-            },
-            length: {
-                min: 6,
-                max: 12,
-                errorMsg: constants.loginValidation.passwordLength
-            }
-        },
+      username: {
+          required: {
+              errorMsg: constants.loginValidation.username
+          }
+      },
+      password: {
+          required: {
+              errorMsg: constants.loginValidation.password
+          },
+          length: {
+              min: 6,
+              max: 12,
+              errorMsg: constants.loginValidation.passwordLength
+          }
+      },
     },data)
     
     return errors
@@ -83,86 +82,69 @@ const Login: React.FunctionComponent<Props> = ({
 
   return (
     <View style={style.mainContainer}>
-    <ScrollView>
-      <ImageBackground source={ImagePath} style={{ width: '100%', height: '78%',}} >
-        <TouchableOpacity style={{flexDirection: 'row', justifyContent: "space-between", paddingLeft: 20}} onPress={backButton}>
-          <View style={style.leftContainer}>
-            <MaterialIcon name="chevron-left-circle-outline" size={30} color={theme.highlightTextColor} style={style.backIcon}/>
-          </View>
-          <View style={style.rightContainer}>
-            <ThemedText styleKey="highlightTextColor" style={style.textStyle}>{constants.backText}</ThemedText>
-          </View>
-        </TouchableOpacity>
-        <View style={[style.topContainer, {marginTop: 80, marginBottom: 10}]}>
-          <Image source={constants.recraftLogo} style={[style.logoImage, {width: 150, height: 150}]}/>
-        </View>
-        <View style={[style.topContainer, {marginTop: 0, marginBottom: 30}]}>
-          <ThemedText styleKey="highlightTextColor" style={[style.textStyle, {fontSize: 32, textTransform: 'capitalize'}]}>{constants.title}</ThemedText>
-        </View>
-      </ImageBackground>
-      <View style={{flex:1, backgroundColor: theme.backgroundColor}}>
-        <View style={[style.container, {backgroundColor: theme.backgroundColor, position: 'relative', bottom : 340, shadowOffset: { width: 0, height: 8 },shadowOpacity: 0.2,elevation: 6, marginLeft:50, marginRight: 50, borderRadius: 40, paddingBottom: 70}]}>
-          <View style={[style.topContainer, {marginTop: 20}]}>
-            <ThemedText styleKey="textColor" style={style.textStyle}>{constants.labelLogin}</ThemedText>
-          </View>
-          <View style={[style.searchContainer, { borderBottomColor: theme.textColor }]}>
-            <View style={style.iconStyle}>
-              <AntDesign name="user" size={15} color={theme.textColor} />
+      <ScrollView>
+        <ImageBackground source={ImagePath} style={{ width: '100%', height: '78%',}} >
+          <TouchableOpacity style={style.backContainer} onPress={backButton}>
+            <View style={style.leftContainer}>
+              <MaterialIcon name="chevron-left-circle-outline" size={30} color={theme.highlightTextColor} style={style.backIcon}/>
             </View>
-            <View style={style.textContainer}>
-              <TextInput
-                placeholder={constants.userPlaceholder}
-                placeholderTextColor={theme.textColor}
-                onChangeText={onChangeUsername}
-                value={username}
-                style={{ color: theme.textColor, paddingBottom: isIOS() ? 0 : 7, height: isIOS() ? 15 : 35 }}
-              />
+            <View style={style.rightContainer}>
+              <ThemedText styleKey="highlightTextColor" style={style.textStyle}>{constants.backText}</ThemedText>
             </View>
-          </View>
-          <ErrorText
-            errors={errors.username}
-          /> 
-          <View style={[style.searchContainer, { borderBottomColor: theme.textColor }]}>
-            <View style={style.iconStyle}>
-              <AntDesign name="key" size={15} color={theme.textColor} style={{transform: [{ rotate: '80deg' }]}} />
-            </View>
-            <View style={style.textContainer}>
-              <TextInput
-                placeholder={constants.passPlaceholder}
-                placeholderTextColor={theme.textColor}
-                onChangeText={onChangePassword}
-                value={password}
-                style={{ color: theme.textColor, paddingBottom: isIOS() ? 0 : 7, height: isIOS() ? 15 : 35 }}
-                secureTextEntry={true}
-              />
-            </View>
-          </View>
-          <ErrorText
-            errors={errors.password}
-          /> 
-          <TouchableOpacity onPress={goToForget}>
-            <ThemedText style={[style.forgotPassword, style.forgetStyle]} styleKey="appColor">{constants.labelForget}</ThemedText>
           </TouchableOpacity>
-          <RoundButton buttonStyle={{minWidth: 230, marginTop: 30}} label={constants.labelSignin} buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} onPress={goToHome} />
-          <View style={style.childContainer}>
-            <ThemedText style={style.forgotPassword} styleKey="textColor">{constants.labelCheckAcc}</ThemedText>
+          <View style={[style.topContainer, style.imageContainer]}>
+            <Image source={constants.recraftLogo} style={style.logoImage}/>
+          </View>
+          <View style={[style.topContainer, style.titleContainer]}>
+            <ThemedText styleKey="highlightTextColor" style={[style.textStyle, style.titleStyle]}>{constants.title}</ThemedText>
+          </View>
+        </ImageBackground>
+        <View style={{flex:1, backgroundColor: theme.backgroundColor}}>
+          <View style={[style.container, style.extraStyle, {backgroundColor: theme.backgroundColor, position: 'relative', bottom : 340}]}>
+            <View style={[style.topContainer, {marginTop: 20}]}>
+              <ThemedText styleKey="textColor" style={style.textStyle}>{constants.labelLogin}</ThemedText>
+            </View>
+            <Input
+              placeholder={constants.userPlaceholder}
+              onChangeText={onChangeUsername}
+              value={username}
+              errors={errors.username}
+              icon="user"
+              choose={true}
+            />
+            <Input
+              placeholder={constants.passPlaceholder}
+              onChangeText={onChangePassword}
+              value={password}
+              errors={errors.password}
+              secureTextEntry={true}
+              icon="key"
+              choose={true}
+              iconStyle={{transform: [{ rotate: '80deg' }]}}
+            />
+            <TouchableOpacity onPress={goToForget} style={style.forgetContainer}>
+              <ThemedText style={style.forgetStyle} styleKey="appColor">{constants.labelForget}</ThemedText>
+            </TouchableOpacity>
+            <RoundButton buttonStyle={style.signButton} label={constants.labelSignin} buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} onPress={goToHome} />
+            <View style={style.childContainer}>
+              <ThemedText style={style.forgotPassword} styleKey="textColor">{constants.labelCheckAcc}</ThemedText>
+            </View>
+          </View>
+          <View style={{position: 'relative', bottom : 340,}}>
+            <RoundButton buttonStyle={style.signupButton} label={constants.labelSignupWith} buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} onPress={goToHome} />
+            <View style={style.childContainer}>
+              <View style={[style.iconContainer, { backgroundColor: theme.facebookColor }]}>
+                <Icon name="facebook" size={30} color={theme.highlightTextColor} style={style.Icon} />
+              </View>
+              <View style={[style.iconContainer, { backgroundColor: theme.googleColor }]}>
+                <Icon name="google" size={30} color={theme.highlightTextColor} style={style.Icon} />
+              </View>
+              <View style={[style.iconContainer, { backgroundColor: theme.twitterColor }]}>
+                <Icon name="twitter" size={30} color={theme.highlightTextColor} style={style.Icon} />
+              </View>
+            </View>
           </View>
         </View>
-        <View style={{position: 'relative', bottom : 340,}}>
-        <RoundButton buttonStyle={{minWidth: 300, marginTop: 30}} label={constants.labelSignupWith} buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} onPress={goToHome} />
-        <View style={style.childContainer}>
-          <View style={[style.iconContainer, { backgroundColor: theme.facebookColor }]}>
-            <Icon name="facebook" size={30} color={theme.highlightTextColor} style={style.Icon} />
-          </View>
-          <View style={[style.iconContainer, { backgroundColor: theme.googleColor }]}>
-            <Icon name="google" size={30} color={theme.highlightTextColor} style={style.Icon} />
-          </View>
-          <View style={[style.iconContainer, { backgroundColor: theme.twitterColor }]}>
-            <Icon name="twitter" size={30} color={theme.highlightTextColor} style={style.Icon} />
-          </View>
-        </View>
-        </View>
-      </View>
       </ScrollView>
     </View>
   )
@@ -177,9 +159,6 @@ interface Style {
   childContainer: ViewStyle;
   leftContainer: ViewStyle;
   rightContainer: ViewStyle;
-  bottomContainer: ViewStyle;
-  inputContainer: TextStyle;
-  inputLabel: TextStyle;
   forgotPassword: TextStyle;
   forgetStyle: TextStyle;
   title: TextStyle;
@@ -188,9 +167,14 @@ interface Style {
   backIcon: ViewStyle;
   logoImage: ImageStyle;
   textStyle: TextStyle;
-  searchContainer: ViewStyle;
-  iconStyle: ViewStyle;
-  textContainer: ViewStyle;
+  forgetContainer: ViewStyle;
+  backContainer: ViewStyle;
+  imageContainer: ViewStyle;
+  titleStyle: TextStyle;
+  titleContainer: ViewStyle;
+  signButton: ViewStyle;
+  signupButton: ViewStyle;
+  extraStyle: ViewStyle;
 }
 
 const style: Style = StyleSheet.create<Style>({
@@ -215,18 +199,6 @@ const style: Style = StyleSheet.create<Style>({
     paddingRight: 10,
     marginTop: 80,
     marginBottom: 20,
-  },
-  bottomContainer: {
-    flexDirection: 'row',
-    justifyContent: "center",
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingTop: 30,
-    paddingBottom: 30,
-  },
-  inputLabel: {
-    width: "100%",
-    fontSize: 13
   },
   childContainer: {
     flexDirection: 'row',
@@ -253,15 +225,13 @@ const style: Style = StyleSheet.create<Style>({
   forgetStyle: {
     fontWeight: 'bold', 
     textAlign: 'right', 
-    alignSelf: 'flex-end'
-  },
-  inputContainer: {
-    height: 40,
     marginTop: 10,
-    width: "100%",
     marginBottom: 15,
-    borderBottomWidth: 2,
-    fontSize: 16,
+    fontSize: 12,
+  },
+  forgetContainer: { 
+    alignSelf: 'flex-end', 
+    alignItems: 'flex-end', 
   },
   title: {
     fontSize: 28,
@@ -285,23 +255,45 @@ const style: Style = StyleSheet.create<Style>({
   },
   logoImage: {
     justifyContent: 'center',
+    width: 150, 
+    height: 150,
   },
   textStyle: {
     fontSize: 16, 
     fontWeight: 'bold',
   },
-  textContainer: {
-    flex: 9
+  backContainer: {
+    flexDirection: 'row', 
+    justifyContent: "space-between", 
+    paddingLeft: 20
   },
-  searchContainer: {
-    borderBottomWidth: 0.5,
-    flexDirection: "row",
-    alignItems: "center",
-    paddingTop: isIOS() ? 20 : 10,
-    paddingBottom: isIOS() ? 10 : 0
+  imageContainer: {
+    marginTop: 80, 
+    marginBottom: 10
   },
-  iconStyle: {
-    flex: 1,
-    alignItems: "flex-start"
+  titleStyle: {
+    fontSize: 32, 
+    textTransform: 'capitalize'
+  },
+  titleContainer: {
+    marginTop: 0, 
+    marginBottom: 30
+  },
+  signButton: {
+    minWidth: 230, 
+    marginTop: 30
+  },
+  signupButton: {
+    minWidth: 300, 
+    marginTop: 30
+  },
+  extraStyle: {
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.2,
+    elevation: 6, 
+    marginLeft:50, 
+    marginRight: 50, 
+    borderRadius: 40, 
+    paddingBottom: 70
   }
 });
