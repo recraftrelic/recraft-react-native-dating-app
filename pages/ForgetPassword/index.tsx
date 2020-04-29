@@ -52,8 +52,8 @@ const ForgetPassword: React.FunctionComponent<Props> = ({
           <View style={[style.topContainer, {marginTop: 0, marginBottom: 30}]}>
             <ThemedText styleKey="highlightTextColor" style={[style.textStyle, {fontSize: 32, textTransform: 'capitalize'}]}>{constants.forgetText}</ThemedText>
           </View>
-          <RoundButton buttonStyle={{minWidth: 230, marginTop: 0}} label={constants.choiceOne} buttonColor={theme.forgetColor} labelStyle={theme.highlightTextColor} />
-          <RoundButton buttonStyle={{minWidth: 230, marginTop: 10}} label={constants.resetPass} buttonColor={theme.backgroundColor} labelStyle={theme.appColor} />
+          <RoundButton buttonStyle={style.inputLabel} label={constants.choiceOne} buttonColor={theme.forgetColor} labelStyle={theme.highlightTextColor} />
+          <RoundButton buttonStyle={[style.inputLabel, {marginTop: 10}]} label={constants.resetPass} buttonColor={theme.backgroundColor} labelStyle={theme.appColor} />
           <View style={style.childContainer}>
             <ThemedText style={style.forgotPassword} styleKey="highlightTextColor">{constants.newAccount}</ThemedText>
           </View>
@@ -90,7 +90,6 @@ interface Style {
   bottomContainer: ViewStyle;
   forgetContainer: ViewStyle;
   backContainer: ViewStyle;
-  inputContainer: TextStyle;
   inputLabel: TextStyle;
   forgotPassword: TextStyle;
   title: TextStyle;
@@ -138,8 +137,8 @@ const style: Style = StyleSheet.create<Style>({
     paddingLeft: 20
   },
   inputLabel: {
-    width: "100%",
-    fontSize: 13
+    minWidth: 230, 
+    marginTop: 0
   },
   childContainer: {
     flexDirection: 'row',
@@ -170,14 +169,6 @@ const style: Style = StyleSheet.create<Style>({
     paddingLeft: 25, 
     justifyContent: 'center', 
     borderRadius: 50,
-  },
-  inputContainer: {
-    height: 40,
-    marginTop: 10,
-    width: "100%",
-    marginBottom: 15,
-    borderBottomWidth: 2,
-    fontSize: 16,
   },
   title: {
     fontSize: 28,
