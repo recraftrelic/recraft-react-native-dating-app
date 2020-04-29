@@ -7,9 +7,6 @@ import useConstants from '../../hooks/useConstants';
 import useTheme from "../../hooks/useTheme";
 import ThemedText from '../../components/UI/ThemedText';
 import RoundButton from '../../components/Base/RoundButton';
-import { Platform } from "react-native";
-
-const isIOS = (): Boolean => Platform.OS == "ios";
 
 // @ts-ignore
 const ImagePath = require("../../images/main-banner.jpg");
@@ -20,7 +17,6 @@ interface Props extends RouteComponentProps {
 }
 
 const BaseHome: React.FunctionComponent<Props> = ({
-  dispatch,
   history
 }: Props) => {
   const constants: AppConstants = useConstants();
@@ -36,19 +32,19 @@ const BaseHome: React.FunctionComponent<Props> = ({
 
   return (
     <View style={style.mainContainer}>
-      <ImageBackground source={ImagePath} style={{ width: '100%', height: '100%' }} >
-        <View style={[style.topContainer,{paddingTop: 70}]}> 
-          <Image source={constants.recraftLogo} style={[style.logoImage, {width: 120, height: 120}]}/>
+      <ImageBackground source={ImagePath} style={style.imageStyle} >
+        <View style={[style.topContainer, style.logoContainer]}> 
+          <Image source={constants.recraftLogo} style={style.logoImage}/>
         </View>
-        <View style={[style.topContainer,{paddingTop: 20}]}> 
-          <ThemedText styleKey="highlightTextColor" style={[style.textStyle, {fontSize: 32}]}>{constants.title}</ThemedText>
+        <View style={[style.topContainer, style.titleContainer]}> 
+          <ThemedText styleKey="highlightTextColor" style={[style.textStyle, style.title]}>{constants.title}</ThemedText>
         </View>
         <View style={style.topContainer}> 
           <ThemedText styleKey="highlightTextColor" style={style.textStyle}>{constants.welcome}</ThemedText>
         </View>
         <View style={style.rightContainer}> 
-          <View style={{width: 280, paddingTop: 50, paddingRight: isIOS() ? 25 : 35}}>
-            <ThemedText styleKey="highlightTextColor" style={[style.textStyle, {fontSize: 36, textAlign: 'right'}]}>{constants.slogan}</ThemedText>
+          <View style={style.sloganContainer}>
+            <ThemedText styleKey="highlightTextColor" style={[style.textStyle, style.sloganStyle]}>{constants.slogan}</ThemedText>
           </View>
         </View>
         <View style={style.secondContainer}>
@@ -69,8 +65,14 @@ interface Style {
   secondContainer: ViewStyle;
   rightContainer: ViewStyle;
   button: ViewStyle;
+  sloganContainer: ViewStyle;
+  sloganStyle: TextStyle;
+  imageStyle: ImageStyle;
   logoImage: ImageStyle;
+  logoContainer: ViewStyle;
   textStyle: TextStyle;
+  title: TextStyle;
+  titleContainer: ViewStyle;
 }
 
 const style: Style = StyleSheet.create<Style>({
@@ -88,6 +90,8 @@ const style: Style = StyleSheet.create<Style>({
   },
   logoImage: {
     justifyContent: 'center',
+    width: 120, 
+    height: 120,
   },
   topContainer: {
     flexDirection: 'row',
@@ -105,10 +109,12 @@ const style: Style = StyleSheet.create<Style>({
   },
   rightContainer: {
     flex: 1,
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
     alignItems: 'flex-end',
-    paddingLeft: 50,
-    paddingRight: 50,
+    justifyContent: 'center',
+    alignContent: 'flex-end',
+    paddingRight: 30,
+    paddingLeft: 40,
   },
   button: {
     marginTop: 10,
@@ -117,5 +123,26 @@ const style: Style = StyleSheet.create<Style>({
   textStyle: {
     fontSize: 16, 
     fontWeight: 'bold',
-  }
+  },
+  imageStyle: { 
+    width: '100%', 
+    height: '100%',
+  },
+  sloganContainer: {
+    width: 245, 
+    paddingTop: 50,
+  },
+  sloganStyle: {
+    fontSize: 36, 
+    textAlign: 'right'
+  },
+  title: {
+    fontSize: 32
+  },
+  titleContainer: {
+    paddingTop: 20
+  },
+  logoContainer: {
+    paddingTop: 70
+  },
 });

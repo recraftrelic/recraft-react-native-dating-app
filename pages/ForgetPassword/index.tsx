@@ -1,7 +1,7 @@
 import React from 'react';
 import { RouteComponentProps } from 'react-router-native';
 import { Dispatch } from 'redux';
-import { View, ViewStyle, StyleSheet, TextStyle, TouchableOpacity, Image, ImageStyle, ImageBackground, Platform } from 'react-native';
+import { View, ViewStyle, StyleSheet, TextStyle, TouchableOpacity, Image, ImageStyle, ImageBackground } from 'react-native';
 import { AppConstants, AppTheme } from '../../config/DefaultConfig';
 import ThemedText from '../../components/UI/ThemedText';
 import useConstants from '../../hooks/useConstants';
@@ -9,8 +9,6 @@ import RoundButton from '../../components/Base/RoundButton';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import useTheme from '../../hooks/useTheme';
-
-const isIOS = (): Boolean => Platform.OS == "ios";
 
 // @ts-ignore
 const ImagePath = require("../../images/dual-tone.png");
@@ -28,12 +26,12 @@ const ForgetPassword: React.FunctionComponent<Props> = ({
   const theme: AppTheme = useTheme();
 
   const backButton = () => {
-    history.push('/')
+    history.push('/login')
   }
 
   return (
     <>
-    <View style={style.mainContainer}>
+      <View style={style.mainContainer}>
         <ImageBackground source={ImagePath} style={style.imageStyle} >
           <TouchableOpacity style={style.backContainer} onPress={backButton}>
             <View style={style.leftContainer}>
@@ -57,22 +55,22 @@ const ForgetPassword: React.FunctionComponent<Props> = ({
             <ThemedText style={style.forgotPassword} styleKey="highlightTextColor">{constants.newAccount}</ThemedText>
           </View>
         </ImageBackground>
-    </View>
-    <View style={style.bottomContainer}>
-      <View style={style.bottomContent}>
-        <View style={style.childContainer}>
-          <View style={[style.iconContainer, { backgroundColor: theme.facebookColor }]}>
-            <Icon name="facebook" size={30} color={theme.highlightTextColor} style={style.Icon} />
-          </View>
-          <View style={[style.iconContainer, { backgroundColor: theme.googleColor }]}>
-            <Icon name="google" size={30} color={theme.highlightTextColor} style={style.Icon} />
-          </View>
-          <View style={[style.iconContainer, { backgroundColor: theme.twitterColor }]}>
-            <Icon name="twitter" size={30} color={theme.highlightTextColor} style={style.Icon} />
+      </View>
+      <View style={style.bottomContainer}>
+        <View style={style.bottomContent}>
+          <View style={style.childContainer}>
+            <View style={[style.iconContainer, { backgroundColor: theme.facebookColor }]}>
+              <Icon name="facebook" size={30} color={theme.highlightTextColor} style={style.Icon} />
+            </View>
+            <View style={[style.iconContainer, { backgroundColor: theme.googleColor }]}>
+              <Icon name="google" size={30} color={theme.highlightTextColor} style={style.Icon} />
+            </View>
+            <View style={[style.iconContainer, { backgroundColor: theme.twitterColor }]}>
+              <Icon name="twitter" size={30} color={theme.highlightTextColor} style={style.Icon} />
+            </View>
           </View>
         </View>
       </View>
-    </View>
     </>
   )
 };
