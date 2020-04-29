@@ -34,7 +34,7 @@ const ForgetPassword: React.FunctionComponent<Props> = ({
   return (
     <>
     <View style={style.mainContainer}>
-        <ImageBackground source={ImagePath} style={{ width: '100%', height: 550,}} >
+        <ImageBackground source={ImagePath} style={style.imageStyle} >
           <TouchableOpacity style={style.backContainer} onPress={backButton}>
             <View style={style.leftContainer}>
               <MaterialIcon name="chevron-left-circle-outline" size={30} color={theme.highlightTextColor} style={style.backIcon}/>
@@ -45,21 +45,21 @@ const ForgetPassword: React.FunctionComponent<Props> = ({
           </TouchableOpacity>
           <View style={[style.topContainer, style.extraStyle]}>
             <View style={[style.forgetContainer, {backgroundColor: theme.backgroundColor}]}>
-              <Image source={forget} style={[style.logoImage, {width: 50, height: 50}]}/>
+              <Image source={forget} style={style.logoImage}/>
             </View>
           </View>
           <View style={[style.topContainer, style.nexStyle]}>
             <ThemedText styleKey="highlightTextColor" style={[style.textStyle, style.specialText]}>{constants.forgetText}</ThemedText>
           </View>
           <RoundButton buttonStyle={style.inputLabel} label={constants.choiceOne} buttonColor={theme.forgetColor} labelStyle={theme.highlightTextColor} />
-          <RoundButton buttonStyle={[style.inputLabel, {marginTop: 10}]} label={constants.resetPass} buttonColor={theme.backgroundColor} labelStyle={theme.appColor} />
+          <RoundButton buttonStyle={[style.inputLabel, style.title]} label={constants.resetPass} buttonColor={theme.backgroundColor} labelStyle={theme.appColor} />
           <View style={style.childContainer}>
             <ThemedText style={style.forgotPassword} styleKey="highlightTextColor">{constants.newAccount}</ThemedText>
           </View>
         </ImageBackground>
     </View>
     <View style={style.bottomContainer}>
-      <View style={{flex: 1, justifyContent: 'flex-end'}}>
+      <View style={style.bottomContent}>
         <View style={style.childContainer}>
           <View style={[style.iconContainer, { backgroundColor: theme.facebookColor }]}>
             <Icon name="facebook" size={30} color={theme.highlightTextColor} style={style.Icon} />
@@ -89,20 +89,19 @@ interface Style {
   bottomContainer: ViewStyle;
   forgetContainer: ViewStyle;
   backContainer: ViewStyle;
-  inputLabel: TextStyle;
+  inputLabel: ViewStyle;
   forgotPassword: TextStyle;
-  title: TextStyle;
+  title: ViewStyle;
   Icon: TextStyle;
   iconContainer: ViewStyle;
   backIcon: ViewStyle;
   logoImage: ImageStyle;
   textStyle: TextStyle;
-  searchContainer: ViewStyle;
-  iconStyle: ViewStyle;
-  textContainer: ViewStyle;
   extraStyle: ViewStyle;
   nexStyle: ViewStyle;
   specialText: TextStyle;
+  imageStyle: ImageStyle;
+  bottomContent: ViewStyle;
 }
 
 const style: Style = StyleSheet.create<Style>({
@@ -173,8 +172,7 @@ const style: Style = StyleSheet.create<Style>({
     borderRadius: 50,
   },
   title: {
-    fontSize: 28,
-    fontWeight: "600",
+    marginTop: 10
   },
   iconContainer: {
     margin: 12,
@@ -194,24 +192,12 @@ const style: Style = StyleSheet.create<Style>({
   },
   logoImage: {
     justifyContent: 'center',
+    width: 50, 
+    height: 50,
   },
   textStyle: {
     fontSize: 16, 
     fontWeight: 'bold',
-  },
-  textContainer: {
-    flex: 9
-  },
-  searchContainer: {
-    borderBottomWidth: 0.5,
-    flexDirection: "row",
-    alignItems: "center",
-    paddingTop: isIOS() ? 20 : 10,
-    paddingBottom: isIOS() ? 10 : 0
-  },
-  iconStyle: {
-    flex: 1,
-    alignItems: "flex-start"
   },
   extraStyle: {
     marginTop: 120, 
@@ -224,5 +210,13 @@ const style: Style = StyleSheet.create<Style>({
   specialText: {
     fontSize: 32, 
     textTransform: 'capitalize'
+  },
+  imageStyle: {
+    width: '100%', 
+    height: 550,
+  },
+  bottomContent: {
+    flex: 1, 
+    justifyContent: 'flex-end'
   },
 });
