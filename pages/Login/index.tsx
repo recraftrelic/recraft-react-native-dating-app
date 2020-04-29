@@ -82,7 +82,7 @@ const Login: React.FunctionComponent<Props> = ({
   }
 
   return (
-    <View style={{flex: 1, flexDirection:'column'}}>
+    <View style={style.mainContainer}>
     <ScrollView>
       <ImageBackground source={ImagePath} style={{ width: '100%', height: '78%',}} >
         <TouchableOpacity style={{flexDirection: 'row', justifyContent: "space-between", paddingLeft: 20}} onPress={backButton}>
@@ -141,7 +141,7 @@ const Login: React.FunctionComponent<Props> = ({
             errors={errors.password}
           /> 
           <TouchableOpacity onPress={goToForget}>
-            <ThemedText style={[style.forgotPassword, {fontWeight: 'bold', textAlign: 'right', alignSelf: 'flex-end'}]} styleKey="appColor">{constants.labelForget}</ThemedText>
+            <ThemedText style={[style.forgotPassword, style.forgetStyle]} styleKey="appColor">{constants.labelForget}</ThemedText>
           </TouchableOpacity>
           <RoundButton buttonStyle={{minWidth: 230, marginTop: 30}} label={constants.labelSignin} buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} onPress={goToHome} />
           <View style={style.childContainer}>
@@ -172,6 +172,7 @@ export default Login;
 
 interface Style {
   container: ViewStyle;
+  mainContainer: ViewStyle;
   topContainer: ViewStyle;
   childContainer: ViewStyle;
   leftContainer: ViewStyle;
@@ -180,6 +181,7 @@ interface Style {
   inputContainer: TextStyle;
   inputLabel: TextStyle;
   forgotPassword: TextStyle;
+  forgetStyle: TextStyle;
   title: TextStyle;
   Icon: TextStyle;
   iconContainer: ViewStyle;
@@ -200,6 +202,10 @@ const style: Style = StyleSheet.create<Style>({
     backgroundColor: 'transparent',
     justifyContent: "center",
     alignItems: 'center',
+  },
+  mainContainer: {
+    flex: 1, 
+    flexDirection:'column'
   },
   topContainer: {
     flexDirection: 'row',
@@ -243,6 +249,11 @@ const style: Style = StyleSheet.create<Style>({
     alignSelf: 'flex-start',
     alignContent: 'flex-start',
     alignItems: 'flex-start',
+  },
+  forgetStyle: {
+    fontWeight: 'bold', 
+    textAlign: 'right', 
+    alignSelf: 'flex-end'
   },
   inputContainer: {
     height: 40,
