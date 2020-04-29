@@ -1,14 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { RouteComponentProps } from 'react-router-native';
 import { Dispatch } from 'redux';
-import { View, ViewStyle, StyleSheet, TextStyle, TextInput, ScrollView, TouchableOpacity, Image, ImageStyle, ImageBackground, Platform } from 'react-native';
+import { View, ViewStyle, StyleSheet, TextStyle, TouchableOpacity, Image, ImageStyle, ImageBackground, Platform } from 'react-native';
 import { AppConstants, AppTheme } from '../../config/DefaultConfig';
 import ThemedText from '../../components/UI/ThemedText';
 import useConstants from '../../hooks/useConstants';
 import RoundButton from '../../components/Base/RoundButton';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import useTheme from '../../hooks/useTheme';
 
 const isIOS = (): Boolean => Platform.OS == "ios";
@@ -50,7 +49,7 @@ const ForgetPassword: React.FunctionComponent<Props> = ({
             </View>
           </View>
           <View style={[style.topContainer, style.nexStyle]}>
-            <ThemedText styleKey="highlightTextColor" style={[style.textStyle, {fontSize: 32, textTransform: 'capitalize'}]}>{constants.forgetText}</ThemedText>
+            <ThemedText styleKey="highlightTextColor" style={[style.textStyle, style.specialText]}>{constants.forgetText}</ThemedText>
           </View>
           <RoundButton buttonStyle={style.inputLabel} label={constants.choiceOne} buttonColor={theme.forgetColor} labelStyle={theme.highlightTextColor} />
           <RoundButton buttonStyle={[style.inputLabel, {marginTop: 10}]} label={constants.resetPass} buttonColor={theme.backgroundColor} labelStyle={theme.appColor} />
@@ -103,6 +102,7 @@ interface Style {
   textContainer: ViewStyle;
   extraStyle: ViewStyle;
   nexStyle: ViewStyle;
+  specialText: TextStyle;
 }
 
 const style: Style = StyleSheet.create<Style>({
@@ -220,5 +220,9 @@ const style: Style = StyleSheet.create<Style>({
   nexStyle: {
     marginTop: 0, 
     marginBottom: 30
+  },
+  specialText: {
+    fontSize: 32, 
+    textTransform: 'capitalize'
   },
 });
