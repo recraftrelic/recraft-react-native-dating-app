@@ -10,6 +10,7 @@ import ThemedView from '../components/UI/ThemedView';
 import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 import ForgetPassword from '../pages/ForgetPassword';
+import Gender from '../pages/Gender';
 
 interface Props {
   configReducer: ApplicationConfig
@@ -28,6 +29,7 @@ const Router: React.FunctionComponent<Props> = ({
               <Route exact path="/login/" component={Login} />
               <Route exact path="/signup/" component={Signup} />
               <Route exact path="/forget/" component={ForgetPassword} />
+              <Route exact path="/gender/" component={Gender} />
             </Switch>
           </BackHandlerHOC>
         </NativeRouter>
