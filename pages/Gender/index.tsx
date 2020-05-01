@@ -27,6 +27,10 @@ const Gender: React.FunctionComponent<Props> = ({
     history.push('/login')
   }
 
+  const goToMatching = () => {
+    history.push('/matching')
+  }
+
   return (
     <>
       <View style={style.mainContainer}>
@@ -62,7 +66,7 @@ const Gender: React.FunctionComponent<Props> = ({
           </View>
         </View>
       </View>
-      <RoundButton buttonStyle={style.inputLabel} label="Next" buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} />
+      <RoundButton buttonStyle={style.inputLabel} label="Next" buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} onPress={goToMatching}/>
     </>
   )
 };
