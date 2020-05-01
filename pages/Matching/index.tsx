@@ -29,7 +29,11 @@ const Matching: React.FunctionComponent<Props> = ({
   const theme: AppTheme = useTheme();
 
   const backButton = () => {
-    history.goBack();
+    history.push('/gender');
+  }
+
+  const goToMatched = () => {
+    history.push('/matched')
   }
 
   return (
@@ -88,7 +92,7 @@ const Matching: React.FunctionComponent<Props> = ({
                   </TouchableOpacity>
                 </View>
                 <View style={style.iconContainer}>
-                  <TouchableOpacity>
+                  <TouchableOpacity onPress={goToMatched}>
                     <Image source={chat} style={style.specialStyle}/>
                   </TouchableOpacity>
                 </View>

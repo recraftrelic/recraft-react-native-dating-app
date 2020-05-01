@@ -12,6 +12,7 @@ import Signup from '../pages/Signup';
 import ForgetPassword from '../pages/ForgetPassword';
 import Gender from '../pages/Gender';
 import Matching from '../pages/Matching';
+import Matched from '../pages/Matched';
 
 interface Props {
   configReducer: ApplicationConfig
@@ -32,6 +33,7 @@ const Router: React.FunctionComponent<Props> = ({
               <Route exact path="/forget/" component={ForgetPassword} />
               <Route exact path="/gender/" component={Gender} />
               <Route exact path="/matching/" component={Matching} />
+              <Route exact path="/matched/" component={Matched} />
             </Switch>
           </BackHandlerHOC>
         </NativeRouter>
