@@ -24,6 +24,7 @@ export interface AppConstants {
   selectedLanguage: LanguageKey,
   title: string,
   forgetText: string,
+  GenderText: string,
   welcome: string,
   slogan: string,
   recraftLogo: any,
@@ -45,6 +46,7 @@ export interface AppConstants {
   choiceOne: string,
   resetPass: string,
   newAccount: string,
+  selectGender: string,
   loginValidation: loginValidation,
   signupValidation: signupValidation,
 }
@@ -80,6 +82,7 @@ export const defaultConfig: ApplicationConfig = {
     selectedLanguage: LanguageKey.en,
     title: "RECRAFT DATING",
     forgetText: "Forget Password",
+    GenderText: "Gender",
     welcome: 'Welcome Back',
     slogan: "Meet and share every moments",
     recraftLogo: Logo,
@@ -101,6 +104,7 @@ export const defaultConfig: ApplicationConfig = {
     choiceOne: "Email or Phone",
     resetPass: "Reset Password",
     newAccount: "or Create New Account",
+    selectGender: "Select your gender",
     loginValidation : {
       username: `Username is required`,
       password: `Password is required`,

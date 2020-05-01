@@ -102,7 +102,7 @@ const Signup: React.FunctionComponent<Props> = ({
 
     if(!Object.keys(errors).length)
     {
-      history.push('/home/')
+      history.push('/gender/')
     }
     else {
       setErrors(errors)
