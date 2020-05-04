@@ -1,4 +1,4 @@
-package com.recraftreactnativebaseapp;
+package com.recraftreactnativedatingapp;
 
 import android.app.Application;
 import android.content.Context;
