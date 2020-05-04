@@ -31,6 +31,10 @@ const Matched: React.FunctionComponent<Props> = ({
     history.push('/matching')
   }
 
+  const goToSearching = () => {
+    history.push('/searching')
+  }
+
   return (
     <>
       <ScrollView>
@@ -64,7 +68,7 @@ const Matched: React.FunctionComponent<Props> = ({
           </View>
         </ImageBackground>
       </View>
-      <RoundButton buttonStyle={style.inputLabel} label={constants.message} buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} />
+      <RoundButton buttonStyle={style.inputLabel} label={constants.message} buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} onPress={goToSearching}/>
       <RoundButton buttonStyle={[style.inputLabel, style.title]} label={constants.gifts} buttonColor={theme.backgroundColor} labelStyle={theme.appColor} />
       </ScrollView>
       <FooterNavigation history={history} />    
