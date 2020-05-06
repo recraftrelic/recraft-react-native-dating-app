@@ -31,10 +31,13 @@ const Matched: React.FunctionComponent<Props> = ({
     history.push('/matching')
   }
 
+  const goToSearching = () => {
+    history.push('/searching')
+  }
+
   return (
-    <>
+    <View style={style.mainContainer}>
       <ScrollView>
-      <View style={style.mainContainer}>
         <ImageBackground source={ImagePath} style={style.imageStyle} >
           <TouchableOpacity style={style.backContainer} onPress={backButton}>
             <View style={style.leftContainer}>
@@ -63,12 +66,11 @@ const Matched: React.FunctionComponent<Props> = ({
             <ThemedText style={[style.forgotPassword, style.messageContent]} styleKey="highlightTextColor">{constants.matchText}</ThemedText>
           </View>
         </ImageBackground>
-      </View>
-      <RoundButton buttonStyle={style.inputLabel} label={constants.message} buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} />
-      <RoundButton buttonStyle={[style.inputLabel, style.title]} label={constants.gifts} buttonColor={theme.backgroundColor} labelStyle={theme.appColor} />
+        <RoundButton buttonStyle={style.inputLabel} label={constants.message} buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} onPress={goToSearching}/>
+        <RoundButton buttonStyle={[style.inputLabel, style.title]} label={constants.gifts} buttonColor={theme.backgroundColor} labelStyle={theme.appColor} />
       </ScrollView>
-      <FooterNavigation history={history} />    
-    </>
+      <FooterNavigation history={history} /> 
+    </View>
   )
 };
 
