@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { RouteComponentProps } from 'react-router-native';
 import { Dispatch } from 'redux';
-import { View, ViewStyle, StyleSheet, TextStyle, ScrollView, TouchableOpacity, Image, ImageStyle, ImageBackground, Platform } from 'react-native';
+import { View, ViewStyle, StyleSheet, TextStyle, ScrollView, TouchableOpacity, Image, ImageStyle, ImageBackground } from 'react-native';
 import { AppConstants, AppTheme } from '../../config/DefaultConfig';
 import ThemedText from '../../components/UI/ThemedText';
 import useConstants from '../../hooks/useConstants';
@@ -18,10 +18,8 @@ interface LoginField {
   password?: string;
 }
 
-const isIOS = (): Boolean => Platform.OS == "ios";
-
 // @ts-ignore
-const ImagePath = require("../../images/dual-tone.png");
+const ImagePath = require("../../images/gender.png");
 
 interface Props extends RouteComponentProps {
   dispatch: Dispatch,
@@ -80,10 +78,14 @@ const Login: React.FunctionComponent<Props> = ({
     history.push('/forget')
   }
 
+  const goToSignup = () => {
+    history.push('/signup')
+  }
+
   return (
     <View style={style.mainContainer}>
       <ScrollView>
-        <ImageBackground source={ImagePath} style={{ width: '100%', height: '78%',}} >
+        <ImageBackground source={ImagePath} style={{ width: '100%', height: 450,}} >
           <TouchableOpacity style={style.backContainer} onPress={backButton}>
             <View style={style.leftContainer}>
               <MaterialIcon name="chevron-left-circle-outline" size={30} color={theme.highlightTextColor} style={style.backIcon}/>
@@ -100,7 +102,7 @@ const Login: React.FunctionComponent<Props> = ({
           </View>
         </ImageBackground>
         <View style={{flex:1, backgroundColor: theme.backgroundColor}}>
-          <View style={[style.container, style.extraStyle, {backgroundColor: theme.backgroundColor, position: 'relative', bottom : 340}]}>
+          <View style={[style.container, style.extraStyle, {backgroundColor: theme.backgroundColor, position: 'relative', bottom : 80 }]}>
             <View style={[style.topContainer, {marginTop: 20}]}>
               <ThemedText styleKey="textColor" style={style.textStyle}>{constants.labelLogin}</ThemedText>
             </View>
@@ -130,8 +132,8 @@ const Login: React.FunctionComponent<Props> = ({
               <ThemedText style={style.forgotPassword} styleKey="textColor">{constants.labelCheckAcc}</ThemedText>
             </View>
           </View>
-          <View style={{position: 'relative', bottom : 340,}}>
-            <RoundButton buttonStyle={style.signupButton} label={constants.labelSignupWith} buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} onPress={goToHome} />
+          <View style={{position: 'relative', bottom : 40,}}>
+            <RoundButton buttonStyle={style.signupButton} label={constants.labelSignupWith} buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} onPress={goToSignup} />
             <View style={style.childContainer}>
               <View style={[style.iconContainer, { backgroundColor: theme.facebookColor }]}>
                 <Icon name="facebook" size={30} color={theme.highlightTextColor} style={style.Icon} />
