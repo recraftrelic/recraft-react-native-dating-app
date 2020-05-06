@@ -21,15 +21,15 @@ const FooterNavigation: React.FunctionComponent<Props> = ({
     const theme: AppTheme = useTheme();
 
     const backButton = () => {
-        history.push('/')
+        history.push('/gender')
     }
 
-    const goToShopping = () => {
-        history.push('/')
+    const goToNearby = () => {
+        history.push('/nearby')
     }
 
-    const goToBag = () => {
-        history.push('/')
+    const goToSearching = () => {
+        history.push('/searching')
     }
 
     const goToSetting = () => {
@@ -47,12 +47,12 @@ const FooterNavigation: React.FunctionComponent<Props> = ({
                     <Image source={home} style={style.logoImage}/>
                 </View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={goToShopping}>
+            <TouchableOpacity onPress={goToNearby}>
                 <View style={style.iconContainer}>
                     <Image source={group} style={style.logoImage}/>
                 </View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={goToBag}>
+            <TouchableOpacity onPress={goToSearching}>
                 <View style={style.iconContainer}>
                     <Image source={message} style={style.logoImage}/>
                 </View>

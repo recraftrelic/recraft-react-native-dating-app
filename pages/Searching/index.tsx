@@ -123,8 +123,8 @@ const style: Style = StyleSheet.create<Style>({
     height: 270,
     borderRadius: 200,
     backgroundColor: '#fd9ca5', 
-    marginTop: 70,
-    marginBottom: 70,
+    marginTop: 55,
+    marginBottom: 55,
     justifyContent: 'center',
   },
   logoImage: {
@@ -157,7 +157,7 @@ const style: Style = StyleSheet.create<Style>({
   },
   extraStyle: {
     backgroundColor: '#ffbcc3', 
-    borderRadius: 250, 
+    borderRadius: 200, 
     marginLeft: 10, 
     marginRight: 10
   },

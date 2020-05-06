@@ -54,6 +54,7 @@ export interface AppConstants {
   selectGender: string,
   searching: string,
   nearby: string,
+  discover: string,
   loginValidation: loginValidation,
   signupValidation: signupValidation,
 }
@@ -119,6 +120,7 @@ export const defaultConfig: ApplicationConfig = {
     selectGender: "Select your gender",
     searching: "Searching",
     nearby: "Near by",
+    discover: "Discover",
     loginValidation : {
       username: `Username is required`,
       password: `Password is required`,
