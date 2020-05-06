@@ -14,6 +14,7 @@ import Gender from '../pages/Gender';
 import Matching from '../pages/Matching';
 import Matched from '../pages/Matched';
 import Searching from '../pages/Searching';
+import Nearby from '../pages/Nearby';
 
 interface Props {
   configReducer: ApplicationConfig
@@ -36,6 +37,7 @@ const Router: React.FunctionComponent<Props> = ({
               <Route exact path="/matching/" component={Matching} />
               <Route exact path="/matched/" component={Matched} />
               <Route exact path="/searching/" component={Searching} />
+              <Route exact path="/nearby/" component={Nearby} />
             </Switch>
           </BackHandlerHOC>
         </NativeRouter>
