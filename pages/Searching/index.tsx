@@ -45,8 +45,8 @@ const Searching: React.FunctionComponent<Props> = ({
             </View>
           </View>
         </ImageBackground>
+        <FooterNavigation history={history} />    
       </View>
-      <FooterNavigation history={history} />    
     </>
   )
 };
