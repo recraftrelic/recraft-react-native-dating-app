@@ -13,8 +13,8 @@ import FooterNavigation from '../Footer/Index';
 
 // @ts-ignore
 const ImagePath = require("../../images/gender.png");
-const girl = require("../../images/girl.png");
-const boy = require("../../images/boy.png");
+const girl = require("../../images/new-girl.jpg");
+const boy = require("../../images/new-boy.jpg");
 
 interface Props extends RouteComponentProps {
   dispatch: Dispatch,
@@ -193,7 +193,8 @@ const style: Style = StyleSheet.create<Style>({
     justifyContent: 'center',
     width: 130, 
     height: 130,
-    margin: 32
+    margin: 32,
+    borderRadius: 130
   },
   textStyle: {
     fontSize: 16, 

@@ -12,8 +12,8 @@ import FooterNavigation from '../Footer/Index';
 // @ts-ignore
 const ImagePath = require("../../images/dual-tone.png");
 const search = require("../../images/search.png");
-const profile1 = require("../../images/profile1.png");
-const profile2 = require("../../images/profile2.png");
+const profile1 = require("../../images/new-boy.jpg");
+const profile2 = require("../../images/new-profile.jpg");
 
 interface Props extends RouteComponentProps {
   dispatch: Dispatch,

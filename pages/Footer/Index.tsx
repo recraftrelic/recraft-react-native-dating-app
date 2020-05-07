@@ -21,7 +21,7 @@ const FooterNavigation: React.FunctionComponent<Props> = ({
     const theme: AppTheme = useTheme();
 
     const backButton = () => {
-        history.push('/gender')
+        history.push('/matching')
     }
 
     const goToNearby = () => {
@@ -33,7 +33,7 @@ const FooterNavigation: React.FunctionComponent<Props> = ({
     }
 
     const goToSetting = () => {
-        history.push("/")
+        history.push("/edit")
     }
 
     const goToProfile = () => {

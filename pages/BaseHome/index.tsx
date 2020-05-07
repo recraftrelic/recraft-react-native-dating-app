@@ -9,7 +9,7 @@ import ThemedText from '../../components/UI/ThemedText';
 import RoundButton from '../../components/Base/RoundButton';
 
 // @ts-ignore
-const ImagePath = require("../../images/main-banner.jpg");
+const ImagePath = require("../../images/new-banner.jpg");
 
 interface Props extends RouteComponentProps {
   dispatch: Dispatch,
