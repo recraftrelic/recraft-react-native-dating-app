@@ -15,7 +15,7 @@ const ImagePath = require("../../images/dual-tone.png");
 const cross = require("../../images/cross.png");
 const chat = require("../../images/chat.png");
 const heart = require("../../images/heart.png");
-const cardImage = require("../../images/card-image.png");
+const cardImage = require("../../images/new-card.jpg");
 
 interface Props extends RouteComponentProps {
   dispatch: Dispatch,
