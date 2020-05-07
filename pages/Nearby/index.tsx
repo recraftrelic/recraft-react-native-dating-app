@@ -33,11 +33,13 @@ const Nearby: React.FunctionComponent<Props> = ({
   return (
     <>
       <View style={style.mainContainer}>
-        <ImageBackground source={ImagePath} style={style.imageStyle} >
-          <TouchableOpacity style={style.backContainer} onPress={backButton}>
-            <View style={style.leftContainer}>
-              <MaterialIcon name="chevron-left-circle-outline" size={30} color={theme.highlightTextColor} style={style.backIcon}/>
-            </View>
+        <ImageBackground source={ImagePath} style={style.imageStyle}>
+          <View style={style.backContainer}>
+            <TouchableOpacity  onPress={backButton}>
+              <View style={style.leftContainer}>
+                <MaterialIcon name="chevron-left-circle-outline" size={30} color={theme.highlightTextColor} style={style.backIcon}/>
+              </View>
+            </TouchableOpacity>
             <View style={style.centerContainer}>
               <View style={style.childContainer}>
                 <View style={style.leftContainer}>
@@ -51,7 +53,7 @@ const Nearby: React.FunctionComponent<Props> = ({
             <View style={style.rightContainer}>
               <Image source={search} style={style.searchStyle}/>
             </View>
-          </TouchableOpacity>
+          </View>
           <View style={style.childContainer}>
             <View style={[style.leftContainer, {paddingRight: 10, }]}>
               <View style={[style.container, {backgroundColor: theme.backgroundColor}]}>
