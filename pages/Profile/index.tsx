@@ -13,7 +13,7 @@ import FooterNavigation from '../Footer/Index';
 
 // @ts-ignore
 const ImagePath = require("../../images/profile.png");
-const girl = require("../../images/profile2.png");
+const girl = require("../../images/new-profile.jpg");
 const chat = require("../../images/message.png");
 const image = require("../../images/images.png");
 const logout = require("../../images/logout.png");
@@ -58,7 +58,7 @@ const Profile: React.FunctionComponent<Props> = ({
           </View>
         </ImageBackground>
         <View style={[style.childContainer, style.nexStyle]}>
-          <RoundButton buttonStyle={style.inputLabel} label={constants.editProfile} buttonColor={theme.appColor} labelStyle={theme.highlightTextColor}/>
+          <RoundButton buttonStyle={style.inputLabel} label={constants.editProfile} buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} onPress={goToEditProfile}/>
         </View>
         <ScrollView>
           <TouchableOpacity style={[style.backContainer, style.title]} onPress={backButton}>

@@ -10,7 +10,7 @@ import FooterNavigation from '../Footer/Index';
 
 // @ts-ignore
 const ImagePath = require("../../images/dual-tone.png");
-const girl = require("../../images/girl.png");
+const girl = require("../../images/searching.jpg");
 
 interface Props extends RouteComponentProps {
   dispatch: Dispatch,
@@ -131,7 +131,8 @@ const style: Style = StyleSheet.create<Style>({
     justifyContent: 'center',
     width: 150, 
     height: 150,
-    marginLeft: 25
+    marginLeft: 25,
+    borderRadius: 150
   },
   textStyle: {
     fontSize: 16, 

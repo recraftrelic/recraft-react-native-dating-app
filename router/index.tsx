@@ -16,6 +16,7 @@ import Matched from '../pages/Matched';
 import Searching from '../pages/Searching';
 import Nearby from '../pages/Nearby';
 import Profile from '../pages/Profile';
+import EditProfile from '../pages/EditProfile';
 import Calling from '../pages/Calling';
 
 interface Props {
@@ -41,6 +42,7 @@ const Router: React.FunctionComponent<Props> = ({
               <Route exact path="/searching/" component={Searching} />
               <Route exact path="/nearby/" component={Nearby} />
               <Route exact path="/profile/" component={Profile} />
+              <Route exact path="/edit/" component={EditProfile} />
               <Route exact path="/calling/" component={Calling} />
             </Switch>
           </BackHandlerHOC>
