@@ -37,7 +37,7 @@ const FooterNavigation: React.FunctionComponent<Props> = ({
     }
 
     const goToProfile = () => {
-        history.push("/")
+        history.push("/profile")
     }
 
     return (

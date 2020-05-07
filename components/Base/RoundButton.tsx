@@ -1,8 +1,10 @@
 import React from 'react';
-import { GestureResponderEvent, StyleSheet, TouchableOpacity, View, ViewStyle, TextStyle } from 'react-native';
+import { GestureResponderEvent, StyleSheet, TouchableOpacity, View, ViewStyle, TextStyle, Platform } from 'react-native';
 import useTheme from "../../hooks/useTheme";
 import { AppTheme } from "../../config/DefaultConfig";
 import ThemedText from '../UI/ThemedText';
+
+const isIOS = (): Boolean => Platform.OS == "ios";
 
 interface Props {
     label: string;
@@ -56,7 +58,7 @@ const style: Style = StyleSheet.create<Style>({
     },
     userNameStyle: {
         fontWeight: "bold",
-        paddingTop: 2,
+        paddingTop: isIOS() ? 2 : 0,
         paddingBottom: 2,
         fontSize: 16,
     }
