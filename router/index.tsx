@@ -20,6 +20,7 @@ import EditProfile from '../pages/EditProfile';
 import Calling from '../pages/Calling';
 import VideoCall from '../pages/VideoCall';
 import Premium from '../pages/Premium';
+import Message from '../pages/Message';
 
 interface Props {
   configReducer: ApplicationConfig
@@ -48,6 +49,7 @@ const Router: React.FunctionComponent<Props> = ({
               <Route exact path="/calling/" component={Calling} />
               <Route exact path="/video/" component={VideoCall} />
               <Route exact path="/premium/" component={Premium} />
+              <Route exact path="/message/" component={Message} />
             </Switch>
           </BackHandlerHOC>
         </NativeRouter>
