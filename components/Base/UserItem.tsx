@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, ViewStyle, Image, ImageStyle, ImageSourcePropType, TextStyle, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, ViewStyle, Image, ImageStyle, ImageSourcePropType, TextStyle, TouchableOpacity, GestureResponderEvent } from 'react-native';
 import { AppTheme } from '../../config/DefaultConfig';
 import useTheme from "../../hooks/useTheme";
 import ThemedText from '../UI/ThemedText';
@@ -9,18 +9,19 @@ interface Props {
     title: string;
     content: string;
     notificationCount?: number;
+    onChatPress?: (event: GestureResponderEvent) => void
 };
 
 const UserItem: React.FunctionComponent<Props> = (props: Props) => {
     const theme: AppTheme = useTheme();
-    const { image, title, content, notificationCount } = props;
+    const { image, title, content, notificationCount, onChatPress } = props;
 
     return (
       <View style={[style.childContainer, style.backContainer]}>
         <View style={style.leftContainer}>
           <Image source={image} style={style.imageStyle}/>
         </View>
-        <TouchableOpacity style={[style.centerContainer, { borderColor: theme.inputColor}]}>
+        <TouchableOpacity style={[style.centerContainer, { borderColor: theme.inputColor}]} onPress={onChatPress}>
           <View style={style.childContainer}>
             <View style={style.leftContainer}>
               <ThemedText style={style.textStyle} styleKey="premiumColor">{title}</ThemedText>
