@@ -41,6 +41,10 @@ const Profile: React.FunctionComponent<Props> = ({
     history.push('/premium')
   }
 
+  const goToMessage = () => {
+    history.push('/message')
+  }
+
   return (
     <>
       <View style={style.mainContainer}>
@@ -89,7 +93,7 @@ const Profile: React.FunctionComponent<Props> = ({
                 <ThemedText styleKey="inputColor" style={style.textStyle}>Matches</ThemedText>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity style={[style.backContainer, style.title]} >
+          <TouchableOpacity style={[style.backContainer, style.title]} onPress={goToMessage}>
             <View style={style.leftContainer}>
                 <Image source={chat} style={style.iconImage}/>
             </View>

@@ -29,6 +29,7 @@ export const darkTheme: AppTheme = {
     errorColor: '#FF0000',
     forgetColor: '#fd8f90',
     premiumColor: '#7b7b7b',
+    notifyColor: '#fb3f5f',
 }
   
 export const lightTheme: AppTheme = {
@@ -51,6 +52,7 @@ export const lightTheme: AppTheme = {
     errorColor: '#FF0000',
     forgetColor: '#fd8f90',
     premiumColor: '#7b7b7b',
+    notifyColor: '#fb3f5f',
 }
 
 export const themes: ThemesMap = {

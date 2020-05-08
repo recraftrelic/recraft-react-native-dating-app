@@ -21,6 +21,7 @@ export interface AppTheme {
   errorColor: string,
   forgetColor: string,
   premiumColor: string,
+  notifyColor: string,
 }
 
 export interface AppConstants {
@@ -70,6 +71,7 @@ export interface AppConstants {
   calling: string,
   perMonth: string,
   perYear: string,
+  messageText: string,
   loginValidation: loginValidation,
   signupValidation: signupValidation,
 }
@@ -147,6 +149,7 @@ export const defaultConfig: ApplicationConfig = {
     calling: "Calling..........",
     perMonth: "$4.99/month",
     perYear: "$55/12 month",
+    messageText: "Message",
     loginValidation : {
       username: `Username is required`,
       password: `Password is required`,
