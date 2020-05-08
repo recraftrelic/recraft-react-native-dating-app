@@ -37,6 +37,10 @@ const Profile: React.FunctionComponent<Props> = ({
     history.push('/edit')
   }
 
+  const goToPremium = () => {
+    history.push('/premium')
+  }
+
   return (
     <>
       <View style={style.mainContainer}>
@@ -69,7 +73,7 @@ const Profile: React.FunctionComponent<Props> = ({
                 <ThemedText styleKey="inputColor" style={style.textStyle}>Home</ThemedText>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity style={[style.backContainer, style.title]} >
+          <TouchableOpacity style={[style.backContainer, style.title]} onPress={goToPremium}>
             <View style={style.leftContainer}>
                 <MaterialIcon name="search-web" size={30} color={theme.inputColor} style={style.backIcon}/>
             </View>
