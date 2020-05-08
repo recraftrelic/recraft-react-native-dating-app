@@ -37,6 +37,10 @@ const Message: React.FunctionComponent<Props> = ({
     history.push('/matching')
   }
 
+  const goToChat = () => {
+    history.push('/chat')
+  }
+
   return (
     <>
       <View style={style.mainContainer}>
@@ -67,7 +71,7 @@ const Message: React.FunctionComponent<Props> = ({
               </TouchableOpacity>
             </View>
           </View>
-          <UserItem image={user1} title="John Rhoades" content="Hey How are you ?" />
+          <UserItem image={user1} title="John Rhoades" content="Hey How are you ?" onChatPress={goToChat}/>
           <UserItem image={user2} title="ds Chiogna" content="Yeah, it’s been great! Are you enjoying it too?" notificationCount={1}/>
           <UserItem image={user3} title="D Afzal-khan" content="love this song – do you like this kind of music?" />
           <UserItem image={user4} title="L Seheult" content="I loved visiting New York. Are there things you.." notificationCount={6}/>
