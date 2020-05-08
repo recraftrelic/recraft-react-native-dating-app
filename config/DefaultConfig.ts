@@ -20,6 +20,7 @@ export interface AppTheme {
   inputBorderColor: string,
   errorColor: string,
   forgetColor: string,
+  premiumColor: string,
 }
 
 export interface AppConstants {
@@ -31,6 +32,7 @@ export interface AppConstants {
   profileName: string,
   matched: string,
   profile: string,
+  premium: string,
   GenderText: string,
   matchText: string,
   message: string,
@@ -54,6 +56,8 @@ export interface AppConstants {
   labelSignupOr: string,
   labelSignupWith: string,
   checkText: string,
+  activatePremium: string,
+  activateYearly: string,
   save: string,
   choiceOne: string,
   resetPass: string,
@@ -64,6 +68,8 @@ export interface AppConstants {
   nearby: string,
   discover: string,
   calling: string,
+  perMonth: string,
+  perYear: string,
   loginValidation: loginValidation,
   signupValidation: signupValidation,
 }
@@ -103,6 +109,9 @@ export const defaultConfig: ApplicationConfig = {
     profileName: "@john manson",
     matched: "IT'S MATCH!",
     profile: "Profile",
+    premium: "Go Premium",
+    activatePremium: "Activate Premium",
+    activateYearly: "Activate Yearly",
     editProfile: "Edit Profile",
     save: "SAVE CHANGES",
     matchText: "You and Jessica have liked each other",
@@ -136,6 +145,8 @@ export const defaultConfig: ApplicationConfig = {
     nearby: "Near by",
     discover: "Discover",
     calling: "Calling..........",
+    perMonth: "$4.99/month",
+    perYear: "$55/12 month",
     loginValidation : {
       username: `Username is required`,
       password: `Password is required`,

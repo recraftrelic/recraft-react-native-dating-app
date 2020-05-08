@@ -28,6 +28,7 @@ export const darkTheme: AppTheme = {
     inputBorderColor: "#dadada",
     errorColor: '#FF0000',
     forgetColor: '#fd8f90',
+    premiumColor: '#7b7b7b',
 }
   
 export const lightTheme: AppTheme = {
@@ -49,6 +50,7 @@ export const lightTheme: AppTheme = {
     inputBorderColor: "#dadada",
     errorColor: '#FF0000',
     forgetColor: '#fd8f90',
+    premiumColor: '#7b7b7b',
 }
 
 export const themes: ThemesMap = {
