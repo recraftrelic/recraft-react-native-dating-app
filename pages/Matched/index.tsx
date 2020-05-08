@@ -71,7 +71,7 @@ const Matched: React.FunctionComponent<Props> = ({
           </View>
         </ImageBackground>
         <RoundButton buttonStyle={style.inputLabel} label={constants.message} buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} onPress={goToSearching}/>
-        <RoundButton buttonStyle={[style.inputLabel, style.title]} label={constants.gifts} buttonColor={theme.backgroundColor} labelStyle={theme.appColor} onPress={goToCalling}/>
+        <RoundButton buttonStyle={[style.inputLabel, style.title, {borderColor: theme.inputColor}]} label={constants.gifts} buttonColor={theme.backgroundColor} labelStyle={theme.appColor} onPress={goToCalling}/>
       </ScrollView>
       <FooterNavigation history={history} /> 
     </View>
@@ -176,7 +176,8 @@ const style: Style = StyleSheet.create<Style>({
   },
   title: {
     marginTop: 10,
-    marginBottom: 100
+    marginBottom: 100,
+    borderWidth: 1
   },
   iconContainer: {
     minWidth: 190,

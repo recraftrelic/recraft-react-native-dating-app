@@ -28,6 +28,10 @@ const Calling: React.FunctionComponent<Props> = ({
     history.push('/matching')
   }
 
+  const goToVideo = () => {
+    history.push('/video')
+  }
+
   return (
     <>
       <View style={style.mainContainer}>
@@ -53,7 +57,7 @@ const Calling: React.FunctionComponent<Props> = ({
       <View style={style.bottomContainer}>
         <View style={style.bottomContent}>
           <View style={style.childContainer}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={goToVideo}>
               <View style={[style.iconContainer, { backgroundColor: 'green' }]}>
                 <Ions name="ios-call" size={50} color={theme.highlightTextColor} style={style.Icon} />
               </View>
