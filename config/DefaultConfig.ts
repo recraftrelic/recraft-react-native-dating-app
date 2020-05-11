@@ -22,6 +22,7 @@ export interface AppTheme {
   forgetColor: string,
   premiumColor: string,
   notifyColor: string,
+  successColor: string,
 }
 
 export interface AppConstants {
@@ -74,6 +75,7 @@ export interface AppConstants {
   payment: string,
   newCard: string,
   saveCard: string,
+  paymentDone: string,
   messageText: string,
   loginValidation: loginValidation,
   signupValidation: signupValidation,
@@ -156,6 +158,7 @@ export const defaultConfig: ApplicationConfig = {
     newCard: "New Card",
     saveCard: "Save Card Details",
     payment: "Payment",
+    paymentDone: "Payment Done",
     loginValidation : {
       username: `Username is required`,
       password: `Password is required`,

@@ -36,6 +36,10 @@ const PaymentProcess: React.FunctionComponent<Props> = ({
     history.push('/card')
   }
 
+  const goToPayment = () => {
+    history.push('/payment')
+  }
+
   return (
     <View style={style.mainContainer}>
       <ImageBackground source={ImagePath} style={style.imageStyle} >
@@ -100,7 +104,7 @@ const PaymentProcess: React.FunctionComponent<Props> = ({
           <ThemedText styleKey="textColor" style={[style.textStyle, style.extraText]}>Pay Pal</ThemedText>
         </View>
       </TouchableOpacity>
-      <RoundButton buttonStyle={style.inputLabel} label="Pay" buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} />
+      <RoundButton buttonStyle={style.inputLabel} label="Pay" buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} onPress={goToPayment}/>
       </ScrollView>
     </View>
   )

@@ -32,6 +32,10 @@ const NewCard: React.FunctionComponent<Props> = ({
     history.push('/premium')
   }
 
+  const goToPaymentProcess = () => {
+    history.push('/process')
+  }
+
   return (
     <View style={style.mainContainer}>
       <ImageBackground source={ImagePath} style={style.imageStyle} >
@@ -84,7 +88,7 @@ const NewCard: React.FunctionComponent<Props> = ({
                 <ThemedText styleKey="textColor" style={[style.textStyle, style.labelStyle]}>{constants.saveCard}</ThemedText>
             </View>
       </View>
-      <RoundButton buttonStyle={style.inputLabel} label="Add Card" buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} />
+      <RoundButton buttonStyle={style.inputLabel} label="Add Card" buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} onPress={goToPaymentProcess}/>
       </ScrollView>
     </View>
   )
