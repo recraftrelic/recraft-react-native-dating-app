@@ -72,6 +72,8 @@ export interface AppConstants {
   perMonth: string,
   perYear: string,
   payment: string,
+  newCard: string,
+  saveCard: string,
   messageText: string,
   loginValidation: loginValidation,
   signupValidation: signupValidation,
@@ -151,6 +153,8 @@ export const defaultConfig: ApplicationConfig = {
     perMonth: "$4.99/month",
     perYear: "$55/12 month",
     messageText: "Message",
+    newCard: "New Card",
+    saveCard: "Save Card Details",
     payment: "Payment",
     loginValidation : {
       username: `Username is required`,
