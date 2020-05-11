@@ -27,6 +27,10 @@ const Premium: React.FunctionComponent<Props> = ({
     history.push('/matching')
   }
 
+  const goToPaymentProcess = () => {
+    history.push('/process')
+  }
+
   return (
     <>
       <View style={style.mainContainer}>
@@ -88,7 +92,7 @@ const Premium: React.FunctionComponent<Props> = ({
             </View>
           </View>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={goToPaymentProcess}>
           <View style={[style.nexContainer, style.inputLabel, { backgroundColor: theme.appColor }]}>
             <View style={style.iconContainer}>
               <ThemedText styleKey="textColor" style={[style.textStyle, style.forgotPassword, {color: theme.highlightTextColor}]}>{constants.activatePremium}</ThemedText>
@@ -96,7 +100,7 @@ const Premium: React.FunctionComponent<Props> = ({
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={goToPaymentProcess}>
           <View style={[style.nexContainer, style.inputLabel, { backgroundColor: theme.appColor }]}>
             <View style={style.iconContainer}>
               <ThemedText styleKey="textColor" style={[style.textStyle, style.forgotPassword, {color: theme.highlightTextColor}]}>{constants.activateYearly}</ThemedText>

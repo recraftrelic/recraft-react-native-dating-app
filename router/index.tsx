@@ -21,6 +21,7 @@ import Calling from '../pages/Calling';
 import VideoCall from '../pages/VideoCall';
 import Premium from '../pages/Premium';
 import Message from '../pages/Message';
+import PaymentProcess from '../pages/PaymentProcess';
 
 interface Props {
   configReducer: ApplicationConfig
@@ -50,6 +51,7 @@ const Router: React.FunctionComponent<Props> = ({
               <Route exact path="/video/" component={VideoCall} />
               <Route exact path="/premium/" component={Premium} />
               <Route exact path="/message/" component={Message} />
+              <Route exact path="/process/" component={PaymentProcess} />
             </Switch>
           </BackHandlerHOC>
         </NativeRouter>
