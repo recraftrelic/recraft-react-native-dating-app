@@ -32,6 +32,10 @@ const PaymentProcess: React.FunctionComponent<Props> = ({
     history.push('/premium')
   }
 
+  const goToNewCard = () => {
+    history.push('/card')
+  }
+
   return (
     <View style={style.mainContainer}>
       <ImageBackground source={ImagePath} style={style.imageStyle} >
@@ -46,10 +50,10 @@ const PaymentProcess: React.FunctionComponent<Props> = ({
           </View>
         </View>
         <View style={[style.backContainer, style.extraStyle]}>
-          <View style={style.leftContainer}>
+          <TouchableOpacity style={style.leftContainer} onPress={goToNewCard}>
             <Image source={add} style={style.logoImage}/>
             <MaterialIcon name="plus" size={30} color={theme.textColor} style={style.nexStyle}/>
-          </View>
+          </TouchableOpacity>
           <View style={[style.rightContainer, style.extraContainer]}>
             <Image source={card} style={style.styleImage}/>
           </View>
