@@ -63,7 +63,7 @@ const NewCard: React.FunctionComponent<Props> = ({
           <ThemedText styleKey="textColor" style={[style.textStyle, style.labelStyle]}>Expiry Date</ThemedText>
           <TextInput placeholder="06/2020" placeholderTextColor={theme.textColor} style={[style.textContainer, { color: theme.textColor, backgroundColor: theme.profileColor }]} />
         </View>
-        <View style={[style.rightContainer, style.extraContainer]}>
+        <View style={[style.rightContainer, style.extraContainer, {marginRight: 20}]}>
           <ThemedText styleKey="textColor" style={[style.textStyle, style.labelStyle]}>CVV</ThemedText>
           <TextInput placeholder="563" placeholderTextColor={theme.textColor} style={[style.textContainer, { color: theme.textColor, backgroundColor: theme.profileColor }]} />
         </View>
