@@ -27,7 +27,7 @@ IOS Demo
   <img width="250" src="./images/previews/ios-13.gif"><img width="250" src="./images/previews/ios-14.gif"><img width="250" src="./images/previews/ios-15.gif">
 </p>
 <p align="center">
-  <img width="250" src="./images/previews/ios-17.gif"><img width="250" src="./images/previews/ios-18.gif">
+  <img width="250" src="./images/previews/ios-17.gif"><img width="250" src="./images/previews/ios-18.gif"><img width="250" src="./images/previews/ios-19.gif">
 </p>
 
 Android Demo
@@ -48,7 +48,7 @@ Android Demo
   <img width="250" src="./images/previews/android-13.gif"><img width="250" src="./images/previews/android-14.gif"><img width="250" src="./images/previews/android-15.gif">
 </p>
 <p align="center">
-  <img width="250" src="./images/previews/android-17.gif"><img width="250" src="./images/previews/android-18.gif">
+  <img width="250" src="./images/previews/android-17.gif"><img width="250" src="./images/previews/android-18.gif">><img width="250" src="./images/previews/android-19.gif">
 </p>
 
 

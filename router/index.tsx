@@ -23,6 +23,7 @@ import Premium from '../pages/Premium';
 import Message from '../pages/Message';
 import PaymentProcess from '../pages/PaymentProcess';
 import NewCard from '../pages/NewCard';
+import Payment from '../pages/Payment';
 
 interface Props {
   configReducer: ApplicationConfig
@@ -54,6 +55,7 @@ const Router: React.FunctionComponent<Props> = ({
               <Route exact path="/message/" component={Message} />
               <Route exact path="/process/" component={PaymentProcess} />
               <Route exact path="/card/" component={NewCard} />
+              <Route exact path="/payment/" component={Payment} />
             </Switch>
           </BackHandlerHOC>
         </NativeRouter>
