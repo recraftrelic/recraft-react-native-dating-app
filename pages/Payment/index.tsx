@@ -30,6 +30,9 @@ const Payment: React.FunctionComponent<Props> = ({
   return (
     <>
       <View style={style.mainContainer}>
+        <TouchableOpacity style={style.nexStyle} onPress={backButton}>
+          <Image source={cross} style={style.logoStyle}/>
+        </TouchableOpacity>
         <ImageBackground source={ImagePath} style={style.imageStyle} >
           <View style={[style.topContainer, style.extraStyle, {backgroundColor: theme.backgroundColor }]}>
             <ThemedText styleKey="textColor" style={style.specialText}>{constants.paymentDone}</ThemedText>
@@ -61,9 +64,6 @@ const Payment: React.FunctionComponent<Props> = ({
             </View>
           </View>
         </ImageBackground>  
-        <TouchableOpacity style={style.nexStyle} onPress={backButton}>
-          <Image source={cross} style={style.logoStyle}/>
-        </TouchableOpacity>
       </View>
     </>
   )
@@ -149,5 +149,6 @@ const style: Style = StyleSheet.create<Style>({
     position: 'absolute', 
     top: 70, 
     right: 15, 
+    zIndex: 9999999
   }
 });
