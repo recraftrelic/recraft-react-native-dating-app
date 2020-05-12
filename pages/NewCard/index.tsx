@@ -13,7 +13,7 @@ const isIOS = (): Boolean => Platform.OS == "ios";
 
 // @ts-ignore
 const ImagePath = require("../../images/profile.png");
-const card = require("../../images/new-card.png");
+const card = require("../../images/new-card2.png");
 
 
 interface Props extends RouteComponentProps {
