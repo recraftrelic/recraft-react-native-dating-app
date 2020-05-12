@@ -1,0 +1,2 @@
+json_key_file("api-6147537396886516203-832266-0371d01a59a1.json") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
+package_name("com.recraftreactnativedatingapp") # e.g. com.krausefx.app
