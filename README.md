@@ -9,6 +9,21 @@ Note
 
 > You can also get the app on play store https://play.google.com/store/apps/details?id=com.recraftreactnativedatingapp
 
+Documentation
+=======
+
+* [Installation](https://documentation.recraftrelic.com/datingapp/docs/Installation.html)
+* [Run the Project in Development Mode](https://documentation.recraftrelic.com/datingapp/docs/Installation.html)
+* [Folder Structure](https://documentation.recraftrelic.com/datingapp/docs/Folder_Structure/)
+* [Constants](https://documentation.recraftrelic.com/datingapp/docs/Constants/)
+* [Themes](https://documentation.recraftrelic.com/datingapp/docs/Themes/)
+* [Languages](https://documentation.recraftrelic.com/datingapp/docs/Languages/)
+* [Pages](https://documentation.recraftrelic.com/datingapp/docs/Pages/)
+* [Available Hooks](https://documentation.recraftrelic.com/datingapp/docs/Hooks/)
+
+Browse the full documentation on ( [https://documentation.recraftrelic.com/datingapp/docs/Installation/](https://documentation.recraftrelic.com/datingapp/docs/Installation/) )
+
+
 IOS Demo
 =======
 <p align="center">
