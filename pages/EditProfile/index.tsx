@@ -9,6 +9,13 @@ import RoundButton from '../../components/Base/RoundButton';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import useTheme from '../../hooks/useTheme';
 import FooterNavigation from '../Footer/Index';
+import ThemeToggle from '../../components/Base/ThemeToggle';
+import LanguageSelector from '../../components/Base/languageSelector';
+import { AppLanguage, LanguageKey } from '../../config/languages';
+import { ThemeKey } from '../../config/themes';
+import useLanguage from '../../hooks/useLanguage';
+import { setThemeAction, setLanguageAction } from '../../store/reducers/config';
+import { connect } from 'react-redux';
 
 const isIOS = (): Boolean => Platform.OS == "ios";
 
@@ -23,10 +30,15 @@ interface Props extends RouteComponentProps {
 }
 
 const EditProfile: React.FunctionComponent<Props> = ({
+  dispatch,
   history
 }: Props) => {
   const constants: AppConstants = useConstants();
   const theme: AppTheme = useTheme();
+  const language: AppLanguage = useLanguage();
+
+  const updateTheme = (theme: ThemeKey) => dispatch(setThemeAction(theme))
+  const updateLanguage = (language: LanguageKey) => dispatch(setLanguageAction(language))
 
   const backButton = () => {
     history.push('/matching')
@@ -44,7 +56,7 @@ const EditProfile: React.FunctionComponent<Props> = ({
             </TouchableOpacity>
             <View style={style.centerContainer}>
               <View style={style.childContainer}>
-                <ThemedText style={style.specialText} styleKey="highlightTextColor">{constants.editProfile}</ThemedText>
+                <ThemedText style={style.specialText} styleKey="highlightTextColor">{language.editProfile}</ThemedText>
               </View>
             </View>
           </View>
@@ -56,12 +68,12 @@ const EditProfile: React.FunctionComponent<Props> = ({
           </View>
         </ImageBackground>
         <View style={[style.childContainer, style.nexStyle]}>
-          <ThemedText styleKey="textColor" style={style.textStyle}>{constants.profileName}</ThemedText>
+          <ThemedText styleKey="textColor" style={style.textStyle}>{language.profileName}</ThemedText>
         </View>
         <ScrollView>
         <View style={[style.backContainer, style.layoutContainer, {marginTop: 40, backgroundColor: theme.profileColor}]}>
           <View style={[style.leftContainer, style.addContainer]}>
-            <ThemedText styleKey="profileTextColor" style={style.labelStyle}>{constants.namePlaceholder}</ThemedText>
+            <ThemedText styleKey="profileTextColor" style={style.labelStyle}>{language.namePlaceholder}</ThemedText>
           </View>
           <View style={[style.centerContainer, style.inputStyle]}>
             <TextInput placeholder="John manson" placeholderTextColor={theme.profileTextColor} style={[style.textContainer, { color: theme.profileTextColor }]} />
@@ -69,7 +81,7 @@ const EditProfile: React.FunctionComponent<Props> = ({
         </View>
         <View style={[style.backContainer, style.layoutContainer, { backgroundColor: theme.profileColor}]}>
           <View style={[style.leftContainer, style.addContainer]}>
-            <ThemedText styleKey="profileTextColor" style={style.labelStyle}>{constants.userPlaceholder}</ThemedText>
+            <ThemedText styleKey="profileTextColor" style={style.labelStyle}>{language.userPlaceholder}</ThemedText>
           </View>
           <View style={[style.centerContainer, style.inputStyle]}>
             <TextInput placeholder="Add username" placeholderTextColor={theme.profilePlaceholder} style={[style.textContainer, { color: theme.profileTextColor }]} />
@@ -77,7 +89,7 @@ const EditProfile: React.FunctionComponent<Props> = ({
         </View>
         <View style={[style.backContainer, style.layoutContainer, { backgroundColor: theme.profileColor}]}>
           <View style={[style.leftContainer, style.addContainer]}>
-            <ThemedText styleKey="profileTextColor" style={style.labelStyle}>{constants.GenderText}</ThemedText>
+            <ThemedText styleKey="profileTextColor" style={style.labelStyle}>{language.GenderText}</ThemedText>
           </View>
           <View style={[style.centerContainer, style.inputStyle]}>
             <TextInput placeholder="Male/Female" placeholderTextColor={theme.profilePlaceholder} style={[style.textContainer, { color: theme.profileTextColor }]} />
@@ -85,7 +97,7 @@ const EditProfile: React.FunctionComponent<Props> = ({
         </View>
         <View style={[style.backContainer, style.layoutContainer, { backgroundColor: theme.profileColor}]}>
           <View style={[style.leftContainer, style.addContainer]}>
-            <ThemedText styleKey="profileTextColor" style={style.labelStyle}>{constants.emailPlaceholder}</ThemedText>
+            <ThemedText styleKey="profileTextColor" style={style.labelStyle}>{language.emailPlaceholder}</ThemedText>
           </View>
           <View style={[style.centerContainer, style.inputStyle]}>
             <TextInput placeholder="Johnmanson@gmail.com" placeholderTextColor={theme.profilePlaceholder} style={[style.textContainer, { color: theme.profileTextColor }]} />
@@ -93,14 +105,16 @@ const EditProfile: React.FunctionComponent<Props> = ({
         </View>
         <View style={[style.backContainer, style.layoutContainer, { backgroundColor: theme.profileColor}]}>
           <View style={[style.leftContainer, style.addContainer]}>
-            <ThemedText styleKey="profileTextColor" style={style.labelStyle}>{constants.phonePlaceholder}</ThemedText>
+            <ThemedText styleKey="profileTextColor" style={style.labelStyle}>{language.phonePlaceholder}</ThemedText>
           </View>
           <View style={[style.centerContainer, style.inputStyle]}>
             <TextInput placeholder="6358789523" placeholderTextColor={theme.profilePlaceholder} style={[style.textContainer, { color: theme.profileTextColor }]} />
           </View>
         </View>
+        <ThemeToggle updateTheme={updateTheme} />
+        <LanguageSelector updateLanguage={updateLanguage} />
         <View style={[style.childContainer, style.extraContainer]}>
-          <RoundButton buttonStyle={style.inputLabel} label={constants.save} buttonColor={theme.appColor} labelStyle={theme.highlightTextColor}/>
+          <RoundButton buttonStyle={style.inputLabel} label={language.save} buttonColor={theme.appColor} labelStyle={theme.highlightTextColor}/>
         </View>
         </ScrollView>
         <FooterNavigation history={history} />
@@ -109,7 +123,7 @@ const EditProfile: React.FunctionComponent<Props> = ({
   )
 };
 
-export default EditProfile;
+export default connect(({ dispatch}) => ({ dispatch }))(EditProfile);
 
 interface Style {
   mainContainer: ViewStyle;

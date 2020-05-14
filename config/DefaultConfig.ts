@@ -28,6 +28,8 @@ export interface AppTheme {
 export interface AppConstants {
   selectedTheme: ThemeKey,
   selectedLanguage: LanguageKey,
+  defaultTheme: string,
+  defaultLanguage: string,
   title: string,
   matching: string,
   forgetText: string,
@@ -110,6 +112,8 @@ export const defaultConfig: ApplicationConfig = {
   constants: {
     selectedTheme: ThemeKey.light,
     selectedLanguage: LanguageKey.en,
+    defaultTheme: "Dark Theme",
+    defaultLanguage: "Default language",
     title: "RECRAFT DATING",
     matching: "Matching",
     forgetText: "Forget Password",
