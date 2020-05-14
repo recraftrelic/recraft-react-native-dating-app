@@ -5,6 +5,7 @@ export interface AppTheme {
   backgroundColor: string,
   highlightColor: string,
   highlightTextColor: string,
+  cardTextColor: string,
   textColor: string,
   lightTextColor: string,
   lightBottomColor: string,

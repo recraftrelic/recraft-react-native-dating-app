@@ -57,7 +57,7 @@ const Matching: React.FunctionComponent<Props> = ({
                 return (
                     <View style={style.card}>
                         <Image source={cardImage} style={style.imageCard}/>
-                        <ThemedText styleKey="textColor" style={style.text}>{card}</ThemedText>
+                        <ThemedText styleKey="cardTextColor" style={style.text}>{card}</ThemedText>
                         <View style={style.childContainer}>
                             <TouchableOpacity>
                                 <View style={style.cardIcon}>
@@ -70,7 +70,7 @@ const Matching: React.FunctionComponent<Props> = ({
                                 </View>
                             </TouchableOpacity>
                         </View>
-                        <ThemedText styleKey="textColor" style={[style.text, style.textStyle]}>{card}</ThemedText>
+                        <ThemedText styleKey="cardTextColor" style={[style.text, style.textStyle]}>{card}</ThemedText>
                     </View>
                 )
             }}
