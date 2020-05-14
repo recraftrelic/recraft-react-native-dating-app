@@ -226,7 +226,7 @@ const style: Style = StyleSheet.create<Style>({
     justifyContent: 'flex-start'
   },
   messageContent: {
-    width: 170, 
+    width: 180, 
     fontWeight: "bold", 
     textAlign: "center", 
     paddingBottom: 20

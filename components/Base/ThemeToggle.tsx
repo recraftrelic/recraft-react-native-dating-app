@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { View, TouchableOpacity, ViewStyle, StyleSheet, Switch, TextStyle, StatusBar } from 'react-native';
-import { AppTheme, lightTheme, darkTheme, AppConstants } from '../../config/DefaultConfig';
+import { View, ViewStyle, StyleSheet, Switch, TextStyle } from 'react-native';
+import { AppTheme, AppConstants } from '../../config/DefaultConfig';
 import useTheme from '../../hooks/useTheme';
 import ThemedText from '../UI/ThemedText';
 import useConstants from '../../hooks/useConstants';
+import { ThemeKey } from '../../config/themes';
 
 interface Props {
-  updateTheme: (theme: AppTheme) => void
+  updateTheme: (theme: ThemeKey) => void
 }
 
 const ThemeToggle: React.FunctionComponent<Props> = ({
@@ -14,28 +15,24 @@ const ThemeToggle: React.FunctionComponent<Props> = ({
 }: Props) => {
   const theme: AppTheme = useTheme();
   const constants: AppConstants = useConstants();
-
-  const [isDarkTheme, toggleDarkTheme] = useState<boolean>(false);
+  const { selectedTheme }: AppConstants = useConstants();
+  const [isDarkTheme, toggleDarkTheme] = useState<boolean>(selectedTheme == ThemeKey.dark);
 
   useEffect(() => {
-    updateTheme(isDarkTheme ? darkTheme : lightTheme)
+    const newSelectedTheme = isDarkTheme ? ThemeKey.dark : ThemeKey.light
+    updateTheme(newSelectedTheme)
   }, [isDarkTheme]);
 
   return (
-    <View>
-      <StatusBar barStyle={isDarkTheme ? "light-content" : "dark-content"} translucent={true} />
-      <View style={style.topContainer}>
-        <View style={style.childContainer}>
-          <ThemedText styleKey="textColor" style={style.title}>{constants.title}</ThemedText>
-        </View>
+    <View style={style.container}>
+      <View style={style.leftContainer}>
+        <ThemedText styleKey="textColor" style={{color: theme.textColor}}>{constants.defaultTheme}</ThemedText>
       </View>
-      <View style={style.bottomContainer}>
-        <View style={style.childContainer}>
-          <Switch trackColor={{
+      <View style={style.rightContainer}>
+        <Switch trackColor={{
             false: theme.lightTextColor,
             true: theme.lightTextColor
           }} thumbColor={theme.textColor} value={isDarkTheme} onValueChange={toggleDarkTheme} />
-        </View>
       </View>
     </View>
   )
@@ -44,34 +41,30 @@ const ThemeToggle: React.FunctionComponent<Props> = ({
 export default ThemeToggle;
 
 interface Style {
-  topContainer: ViewStyle;
-  childContainer: ViewStyle;
-  bottomContainer: ViewStyle;
+  container: ViewStyle;
+  leftContainer: ViewStyle;
+  rightContainer: ViewStyle;
   title: TextStyle;
 }
 
 const style: Style = StyleSheet.create<Style>({
-  topContainer: {
+  container: {
     flexDirection: 'row',
-    justifyContent: "center",
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingTop: 250,
-  },
-  bottomContainer: {
-    flexDirection: 'row',
-    justifyContent: "center",
-    paddingLeft: 10,
-    paddingRight: 10,
+    justifyContent: "space-between",
+    alignItems: 'center',
+    marginLeft: 50,
+    marginRight: 50,
     paddingTop: 30,
-    paddingBottom: 30,
+    paddingBottom: 20,
+  },  
+  leftContainer: {
+    alignItems: "flex-start",
   },
-  childContainer: {
-    flexDirection: 'row',
-    justifyContent: "center",
+  rightContainer: {
+    alignItems: "flex-end",
   },
   title: {
-    fontSize: 28,
+    fontSize: 20,
     fontWeight: "bold"
   }
 });

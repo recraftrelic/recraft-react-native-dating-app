@@ -56,7 +56,7 @@ const PaymentProcess: React.FunctionComponent<Props> = ({
         <View style={[style.backContainer, style.extraStyle]}>
           <TouchableOpacity style={style.leftContainer} onPress={goToNewCard}>
             <Image source={add} style={style.logoImage}/>
-            <MaterialIcon name="plus" size={30} color={theme.textColor} style={style.nexStyle}/>
+            <MaterialIcon name="plus" size={30} color={theme.cardTextColor} style={style.nexStyle}/>
           </TouchableOpacity>
           <View style={[style.rightContainer, style.extraContainer]}>
             <Image source={card} style={style.styleImage}/>

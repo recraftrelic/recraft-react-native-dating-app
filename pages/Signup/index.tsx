@@ -24,7 +24,7 @@ interface LoginField {
 const isIOS = (): Boolean => Platform.OS == "ios";
 
 // @ts-ignore
-const ImagePath = require("../../images/dual-tone.png");
+const ImagePath = require("../../images/gender.png");
 
 interface Props extends RouteComponentProps {
   dispatch: Dispatch,
@@ -113,7 +113,7 @@ const Signup: React.FunctionComponent<Props> = ({
     <>
     <View style={style.mainContainer}>
       <ScrollView>
-        <ImageBackground source={ImagePath} style={{ width: '100%', height: isIOS() ? '78%' :'82%',}} >
+        <ImageBackground source={ImagePath} style={style.imageStyle} >
           <TouchableOpacity style={style.backContainer} onPress={backButton}>
             <View style={style.leftContainer}>
               <MaterialIcon name="chevron-left-circle-outline" size={30} color={theme.highlightTextColor} style={style.backIcon}/>
@@ -130,7 +130,10 @@ const Signup: React.FunctionComponent<Props> = ({
           </View>
         </ImageBackground>
         <View style={{flex:1, backgroundColor: theme.backgroundColor}}>
-          <View style={[style.container, style.extraStyle, {backgroundColor: theme.backgroundColor, position: 'relative', bottom: isIOS() ? 350 : 370}]}>
+          <View style={[style.container, style.extraStyle, {backgroundColor: theme.backgroundColor, position: 'relative', bottom: 80}]}>
+            <View style={[style.topContainer, {marginTop: 20}]}>
+              <ThemedText styleKey="textColor" style={style.textStyle}>{constants.labelSign}</ThemedText>
+            </View>
             <Input
               placeholder={constants.userPlaceholder}
               onChangeText={onChangeUsername}
@@ -189,7 +192,7 @@ const Signup: React.FunctionComponent<Props> = ({
               <ThemedText style={style.forgotPassword} styleKey="textColor">{constants.labelSignupOr}</ThemedText>
             </View>
           </View>
-          <View style={{position: 'relative', bottom: isIOS() ? 340 : 370,}}>
+          <View style={{position: 'relative', bottom: 40}}>
           <View style={style.childContainer}>
             <View style={[style.iconContainer, { backgroundColor: theme.facebookColor }]}>
               <Icon name="facebook" size={30} color={theme.highlightTextColor} style={style.Icon} />
@@ -224,6 +227,7 @@ interface Style {
   iconContainer: ViewStyle;
   backIcon: ViewStyle;
   logoImage: ImageStyle;
+  imageStyle: ImageStyle;
   textStyle: TextStyle;
   searchContainer: ViewStyle;
   iconStyle: ViewStyle;
@@ -363,4 +367,8 @@ const style: Style = StyleSheet.create<Style>({
     minWidth: 230, 
     marginTop: 40,
   },
+  imageStyle: {
+    width: '100%', 
+    height: 370
+  }
 });
