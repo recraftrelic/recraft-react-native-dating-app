@@ -48,7 +48,7 @@ const BaseHome: React.FunctionComponent<Props> = ({
           </View>
         </View>
         <View style={style.secondContainer}>
-          <RoundButton buttonStyle={style.button} label="Login" buttonColor={theme.backgroundColor} onPress={goToLogin} />
+          <RoundButton buttonStyle={style.button} label="Login" buttonColor={theme.highlightTextColor} onPress={goToLogin} />
           <RoundButton buttonStyle={style.button} label="Sign Up" buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} onPress={goToSignUp} />
         </View>
       </ImageBackground>

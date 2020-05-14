@@ -102,7 +102,7 @@ const Login: React.FunctionComponent<Props> = ({
           </View>
         </ImageBackground>
         <View style={{flex:1, backgroundColor: theme.backgroundColor}}>
-          <View style={[style.container, style.extraStyle, {backgroundColor: theme.backgroundColor, position: 'relative', bottom : 80 }]}>
+          <View style={[style.container, style.extraStyle, {backgroundColor: theme.backgroundColor, shadowColor: theme.lightBottomColor, position: 'relative', bottom : 80 }]}>
             <View style={[style.topContainer, {marginTop: 20}]}>
               <ThemedText styleKey="textColor" style={style.textStyle}>{constants.labelLogin}</ThemedText>
             </View>

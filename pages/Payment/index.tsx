@@ -30,11 +30,11 @@ const Payment: React.FunctionComponent<Props> = ({
   return (
     <>
       <View style={style.mainContainer}>
-        <TouchableOpacity style={style.nexStyle} onPress={backButton}>
-          <Image source={cross} style={style.logoStyle}/>
-        </TouchableOpacity>
         <ImageBackground source={ImagePath} style={style.imageStyle} >
           <View style={[style.topContainer, style.extraStyle, {backgroundColor: theme.backgroundColor }]}>
+            <TouchableOpacity style={style.nexStyle} onPress={backButton}>
+              <Image source={cross} style={style.logoStyle}/>
+            </TouchableOpacity>
             <ThemedText styleKey="textColor" style={style.specialText}>{constants.paymentDone}</ThemedText>
             <Ions name="ios-checkmark-circle" size={120} color={theme.successColor} style={{marginTop: 20}}/>
             <View style={style.backContainer}>
@@ -146,9 +146,7 @@ const style: Style = StyleSheet.create<Style>({
     height: 70
   },
   nexStyle: {
-    position: 'absolute', 
-    top: 70, 
-    right: 15, 
-    zIndex: 9999999
+    position: 'absolute',
+    right: 0,
   }
 });

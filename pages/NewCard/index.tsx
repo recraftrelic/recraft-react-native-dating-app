@@ -59,23 +59,23 @@ const NewCard: React.FunctionComponent<Props> = ({
       <View style={[style.backContainer, style.extraStyle]}>
         <View style={[style.rightContainer, style.extraContainer]}>
           <ThemedText styleKey="textColor" style={[style.textStyle, style.labelStyle]}>Card Number</ThemedText>
-          <TextInput placeholder="2365   5225   5255   52522" placeholderTextColor={theme.textColor} style={[style.textContainer, { color: theme.textColor, backgroundColor: theme.profileColor }]} />
+          <TextInput placeholder="2365   5225   5255   52522" placeholderTextColor={theme.cardTextColor} style={[style.textContainer, { color: theme.textColor, backgroundColor: theme.profileColor }]} />
         </View>
       </View>
       <View style={[style.backContainer, style.extraStyle]}>
         <View style={[style.rightContainer, style.extraContainer]}>
           <ThemedText styleKey="textColor" style={[style.textStyle, style.labelStyle]}>Expiry Date</ThemedText>
-          <TextInput placeholder="06/2020" placeholderTextColor={theme.textColor} style={[style.textContainer, { color: theme.textColor, backgroundColor: theme.profileColor }]} />
+          <TextInput placeholder="06/2020" placeholderTextColor={theme.cardTextColor} style={[style.textContainer, { color: theme.textColor, backgroundColor: theme.profileColor }]} />
         </View>
         <View style={[style.rightContainer, style.extraContainer, {marginRight: 20}]}>
           <ThemedText styleKey="textColor" style={[style.textStyle, style.labelStyle]}>CVV</ThemedText>
-          <TextInput placeholder="563" placeholderTextColor={theme.textColor} style={[style.textContainer, { color: theme.textColor, backgroundColor: theme.profileColor }]} />
+          <TextInput placeholder="563" placeholderTextColor={theme.cardTextColor} style={[style.textContainer, { color: theme.textColor, backgroundColor: theme.profileColor }]} />
         </View>
       </View>
       <View style={[style.backContainer, style.extraStyle]}>
         <View style={[style.rightContainer, style.extraContainer]}>
           <ThemedText styleKey="textColor" style={[style.textStyle, style.labelStyle]}>Name</ThemedText>
-          <TextInput placeholder="Delbert Shibata" placeholderTextColor={theme.textColor} style={[style.textContainer, { color: theme.textColor, backgroundColor: theme.profileColor }]} />
+          <TextInput placeholder="Delbert Shibata" placeholderTextColor={theme.cardTextColor} style={[style.textContainer, { color: theme.textColor, backgroundColor: theme.profileColor }]} />
         </View>
       </View>
       <View style={[style.backContainer, style.extraStyle]}>
