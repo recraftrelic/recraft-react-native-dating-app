@@ -149,7 +149,7 @@ const style: Style = StyleSheet.create<Style>({
   },
   imageStyle: { 
     width: '100%', 
-    height: 800,
+    height: 830,
   },
   topContainer: {
     flexDirection: 'row',
@@ -234,7 +234,7 @@ const style: Style = StyleSheet.create<Style>({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     position: 'absolute',
-    bottom: 100
+    bottom: 125
   },
   childContainer: {
     flexDirection: 'row',
