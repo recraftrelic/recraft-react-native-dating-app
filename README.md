@@ -75,6 +75,8 @@ Packages & Libraries used
 * [React router native](https://www.npmjs.com/package/react-router-native) - Declarative routing for React.
 * [TypeScript](https://www.npmjs.com/package/typescript) - TypeScript is a superset of JavaScript that compiles to clean JavaScript output.
 * [React Vector Icons](https://www.npmjs.com/package/react-native-vector-icons) - Customizable Icons for React Native with support for NavBar/TabBar/ToolbarAndroid, image source and full styling.
+* [React Native Deck Swiper](https://www.npmjs.com/package/react-native-deck-swiper) - Trigger swipe animations programmatically
+* [React Native Picker Select](https://www.npmjs.com/package/react-native-picker-select) - A Picker component for React Native which emulates the native interfaces for iOS and Android
 
 Steps to Run the Project in Development Mode
 =======
