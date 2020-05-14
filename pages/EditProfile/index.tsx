@@ -16,6 +16,7 @@ import { ThemeKey } from '../../config/themes';
 import useLanguage from '../../hooks/useLanguage';
 import { setThemeAction, setLanguageAction } from '../../store/reducers/config';
 import { connect } from 'react-redux';
+import PhotoUpload from '../../components/Base/PhotoUpload';
 
 const isIOS = (): Boolean => Platform.OS == "ios";
 
@@ -61,10 +62,8 @@ const EditProfile: React.FunctionComponent<Props> = ({
             </View>
           </View>
           <View style={style.childContainer}>
-            <Image source={girl} style={[style.logoImage, {borderColor: theme.backgroundColor}]}/>
-              <View style={style.specialContainer}>
-                <Image source={contact} style={style.specialStyle}/>
-              </View>
+
+              <PhotoUpload userImageSource={girl} editInfo={true} />
           </View>
         </ImageBackground>
         <View style={[style.childContainer, style.nexStyle]}>
