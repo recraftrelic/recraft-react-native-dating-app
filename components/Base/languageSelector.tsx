@@ -41,10 +41,10 @@ const LanguageSelector: React.FunctionComponent<Props> = ({
     <View>
       <View style={style.container}>
         <View style={style.leftContainer}>
-          <ThemedText styleKey="textColor" style={{color: theme.lightTextColor}}>{constant.defaultLanguage}</ThemedText>
+          <ThemedText styleKey="textColor" style={{color: theme.textColor}}>{constant.defaultLanguage}</ThemedText>
         </View>
         <View style={style.rightContainer}>
-          <RNPickerSelect style={{inputIOS:{color: theme.lightTextColor},inputAndroid:{color: theme.textColor}}} value={language} onValueChange={(value) => onChangeLanguage(value)} items={languages} useNativeAndroidPickerStyle={false}/>
+          <RNPickerSelect style={{inputIOS:{color: theme.textColor},inputAndroid:{color: theme.textColor}}} value={language} onValueChange={(value) => onChangeLanguage(value)} items={languages} useNativeAndroidPickerStyle={false}/>
         </View>
       </View>
     </View>

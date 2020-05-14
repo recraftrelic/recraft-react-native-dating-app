@@ -26,7 +26,7 @@ const ThemeToggle: React.FunctionComponent<Props> = ({
   return (
     <View style={style.container}>
       <View style={style.leftContainer}>
-        <ThemedText styleKey="textColor" style={{color: theme.lightTextColor}}>{constants.defaultTheme}</ThemedText>
+        <ThemedText styleKey="textColor" style={{color: theme.textColor}}>{constants.defaultTheme}</ThemedText>
       </View>
       <View style={style.rightContainer}>
         <Switch trackColor={{
