@@ -9,6 +9,21 @@ Note
 
 > You can also get the app on play store https://play.google.com/store/apps/details?id=com.recraftreactnativedatingapp
 
+Documentation
+=======
+
+* [Installation](https://documentation.recraftrelic.com/datingapp/docs/Installation.html)
+* [Run the Project in Development Mode](https://documentation.recraftrelic.com/datingapp/docs/Installation.html)
+* [Folder Structure](https://documentation.recraftrelic.com/datingapp/docs/Folder_Structure/)
+* [Constants](https://documentation.recraftrelic.com/datingapp/docs/Constants/)
+* [Themes](https://documentation.recraftrelic.com/datingapp/docs/Themes/)
+* [Languages](https://documentation.recraftrelic.com/datingapp/docs/Languages/)
+* [Pages](https://documentation.recraftrelic.com/datingapp/docs/Pages/)
+* [Available Hooks](https://documentation.recraftrelic.com/datingapp/docs/Hooks/)
+
+Browse the full documentation on ( [https://documentation.recraftrelic.com/datingapp/docs/Installation/](https://documentation.recraftrelic.com/datingapp/docs/Installation/) )
+
+
 IOS Demo
 =======
 <p align="center">
@@ -60,6 +75,8 @@ Packages & Libraries used
 * [React router native](https://www.npmjs.com/package/react-router-native) - Declarative routing for React.
 * [TypeScript](https://www.npmjs.com/package/typescript) - TypeScript is a superset of JavaScript that compiles to clean JavaScript output.
 * [React Vector Icons](https://www.npmjs.com/package/react-native-vector-icons) - Customizable Icons for React Native with support for NavBar/TabBar/ToolbarAndroid, image source and full styling.
+* [React Native Deck Swiper](https://www.npmjs.com/package/react-native-deck-swiper) - Trigger swipe animations programmatically
+* [React Native Picker Select](https://www.npmjs.com/package/react-native-picker-select) - A Picker component for React Native which emulates the native interfaces for iOS and Android
 
 Steps to Run the Project in Development Mode
 =======
