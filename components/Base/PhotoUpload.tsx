@@ -139,7 +139,7 @@ const style: Style = StyleSheet.create<Style>({
         top: 130,
     },
     specialStyle: {
-        marginLeft: 180
+        marginLeft: 190
     },
     specialContainer: { 
         position: 'absolute', 

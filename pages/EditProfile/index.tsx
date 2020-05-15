@@ -2,9 +2,8 @@ import React from 'react';
 import { RouteComponentProps } from 'react-router-native';
 import { Dispatch } from 'redux';
 import { View, ViewStyle, StyleSheet, TextStyle, TouchableOpacity, Image, ImageStyle, ImageBackground, ScrollView, TextInput, Platform } from 'react-native';
-import { AppConstants, AppTheme } from '../../config/DefaultConfig';
+import { AppTheme } from '../../config/DefaultConfig';
 import ThemedText from '../../components/UI/ThemedText';
-import useConstants from '../../hooks/useConstants';
 import RoundButton from '../../components/Base/RoundButton';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import useTheme from '../../hooks/useTheme';
@@ -23,7 +22,6 @@ const isIOS = (): Boolean => Platform.OS == "ios";
 // @ts-ignore
 const ImagePath = require("../../images/profile.png");
 const girl = require("../../images/new-profile.jpg");
-const contact = require("../../images/new-contact.png");
 
 interface Props extends RouteComponentProps {
   dispatch: Dispatch,
@@ -34,7 +32,6 @@ const EditProfile: React.FunctionComponent<Props> = ({
   dispatch,
   history
 }: Props) => {
-  const constants: AppConstants = useConstants();
   const theme: AppTheme = useTheme();
   const language: AppLanguage = useLanguage();
 
@@ -62,8 +59,7 @@ const EditProfile: React.FunctionComponent<Props> = ({
             </View>
           </View>
           <View style={style.childContainer}>
-
-              <PhotoUpload userImageSource={girl} editInfo={true} />
+            <PhotoUpload userImageSource={girl} editInfo={true} />
           </View>
         </ImageBackground>
         <View style={[style.childContainer, style.nexStyle]}>
