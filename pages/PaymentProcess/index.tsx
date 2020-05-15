@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { RouteComponentProps } from 'react-router-native';
 import { Dispatch } from 'redux';
 import { View, ViewStyle, StyleSheet, TextStyle, TouchableOpacity, Image, ImageStyle, ImageBackground, ScrollView } from 'react-native';
@@ -23,6 +23,7 @@ interface Props extends RouteComponentProps {
 }
 
 const PaymentProcess: React.FunctionComponent<Props> = ({
+  dispatch,
   history
 }: Props) => {
   const constants: AppConstants = useConstants();
@@ -54,13 +55,18 @@ const PaymentProcess: React.FunctionComponent<Props> = ({
           </View>
         </View>
         <View style={[style.backContainer, style.extraStyle]}>
-          <TouchableOpacity style={style.leftContainer} onPress={goToNewCard}>
-            <Image source={add} style={style.logoImage}/>
-            <MaterialIcon name="plus" size={30} color={theme.cardTextColor} style={style.nexStyle}/>
-          </TouchableOpacity>
-          <View style={[style.rightContainer, style.extraContainer]}>
-            <Image source={card} style={style.styleImage}/>
-          </View>
+          <ScrollView horizontal={true}>
+            <TouchableOpacity style={style.leftContainer} onPress={goToNewCard}>
+              <Image source={add} style={style.logoImage}/>
+              <MaterialIcon name="plus" size={30} color={theme.cardTextColor} style={style.nexStyle}/>
+            </TouchableOpacity>
+            <View style={[style.rightContainer, style.extraContainer]}>
+              <Image source={card} style={style.styleImage}/>
+            </View>
+            <View style={[style.rightContainer, style.extraContainer]}>
+              <Image source={card} style={style.styleImage}/>
+            </View>
+          </ScrollView>
         </View>
       </ImageBackground>
       <ScrollView>
@@ -176,7 +182,8 @@ const style: Style = StyleSheet.create<Style>({
   },
   extraContainer: {
     paddingTop: 0, 
-    paddingLeft: 15
+    paddingLeft: 15,
+    marginRight: 0
   },
   nexStyle: {
     position: 'absolute', 

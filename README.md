@@ -77,6 +77,7 @@ Packages & Libraries used
 * [React Vector Icons](https://www.npmjs.com/package/react-native-vector-icons) - Customizable Icons for React Native with support for NavBar/TabBar/ToolbarAndroid, image source and full styling.
 * [React Native Deck Swiper](https://www.npmjs.com/package/react-native-deck-swiper) - Trigger swipe animations programmatically
 * [React Native Picker Select](https://www.npmjs.com/package/react-native-picker-select) - A Picker component for React Native which emulates the native interfaces for iOS and Android
+* [React Native Image Picker](https://www.npmjs.com/package/react-native-image-picker) - A React Native module that allows you to use native UI to select a photo/video from the device library or directly from the camera.
 
 Steps to Run the Project in Development Mode
 =======

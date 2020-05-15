@@ -83,12 +83,23 @@ export interface AppConstants {
   messageText: string,
   loginValidation: loginValidation,
   signupValidation: signupValidation,
+  cardValidation: cardValidation,
 }
 
 export interface loginValidation {
   username: string,
   password: string,
   passwordLength: string,
+}
+
+export interface cardValidation {
+  cardNumber: string,
+  cardLength: string,
+  expiry: string,
+  expiryValid: string,
+  cvv: string,
+  cvvLength: string,
+  name: string,
 }
 
 export interface signupValidation {
@@ -170,6 +181,15 @@ export const defaultConfig: ApplicationConfig = {
       username: `Username is required`,
       password: `Password is required`,
       passwordLength: 'Password length between 6 and 12',
+    },
+    cardValidation : {
+      cardNumber: `Card Number is required`,
+      cardLength: 'Card Number length should be 12 digit',
+      expiry: `Expiry Date is required`,
+      expiryValid: `Please enter a valid expiry date`,
+      cvv: `CVV is required`,
+      cvvLength: 'CVV length should be 3 digit',
+      name: `Card Holder Name is required`,
     },
     signupValidation : {
       username: `Username is required`,

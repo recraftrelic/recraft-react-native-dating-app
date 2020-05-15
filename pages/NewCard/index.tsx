@@ -1,13 +1,23 @@
 import React, { useState } from 'react';
-import { RouteComponentProps } from 'react-router-native';
+import { RouteComponentProps, Link } from 'react-router-native';
 import { Dispatch } from 'redux';
-import { View, ViewStyle, StyleSheet, TextStyle, TouchableOpacity, Image, ImageStyle, ImageBackground, ScrollView, TextInput, Platform } from 'react-native';
+import { View, ViewStyle, StyleSheet, TextStyle, TouchableOpacity, Image, ImageStyle, ImageBackground, ScrollView, Platform } from 'react-native';
 import { AppConstants, AppTheme } from '../../config/DefaultConfig';
 import ThemedText from '../../components/UI/ThemedText';
 import useConstants from '../../hooks/useConstants';
 import RoundButton from '../../components/Base/RoundButton';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import useTheme from '../../hooks/useTheme';
+import microValidator from 'micro-validator';
+import { ValidationError } from '../../config/validation';
+import CardInput from '../../components/Base/CardInput';
+
+interface CardField {
+  cardNumber?: string;
+  expiry?: string;
+  cvv?: string;
+  name?: string;
+}
 
 const isIOS = (): Boolean => Platform.OS == "ios";
 
@@ -27,13 +37,67 @@ const NewCard: React.FunctionComponent<Props> = ({
   const constants: AppConstants = useConstants();
   const theme: AppTheme = useTheme();
   const [selected,setSelected] = useState<Boolean>(false);
+  const [cardNumber,onChangeCard] = useState<string>("")
+  const [expiry,onChangeExpiry] = useState<string>("")
+  const [cvv,onChangeCvv] = useState<string>("")
+  const [name,onChangeName] = useState<string>("")
+  const [errors,setErrors] = useState<ValidationError>({})
+
+  const validate = (data: CardField): ValidationError => {
+    const errors = microValidator.validate({
+      cardNumber: {
+        required: {
+          errorMsg: constants.cardValidation.cardNumber
+        },
+        length: {
+          min: 12,
+          max: 12,
+          errorMsg: constants.cardValidation.cardLength
+        }
+      },
+      expiry: {
+        required: {
+          errorMsg: constants.cardValidation.expiry
+        },
+        length: {
+          min: 7,
+          max: 7,
+          errorMsg: constants.cardValidation.expiryValid
+        }
+      },
+      cvv: {
+        required: {
+          errorMsg: constants.cardValidation.cvv
+        },
+        length: {
+          min: 3,
+          max: 3,
+          errorMsg: constants.cardValidation.cvvLength
+        }
+      },
+      name: {
+        required: {
+          errorMsg: constants.cardValidation.name
+        },
+      },
+    },data)
+    
+    return errors
+  }
 
   const backButton = () => {
     history.push('/premium')
   }
 
   const goToPaymentProcess = () => {
-    history.push('/process')
+    const errors: ValidationError = validate({cardNumber: cardNumber,expiry: expiry,cvv: cvv,name: name})
+    if(!Object.keys(errors).length)
+    {
+      history.push('/process')
+    }
+    else {
+      setErrors(errors)
+    }
   }
 
   return (
@@ -57,36 +121,46 @@ const NewCard: React.FunctionComponent<Props> = ({
       </ImageBackground>
       <ScrollView>
       <View style={[style.backContainer, style.extraStyle]}>
-        <View style={[style.rightContainer, style.extraContainer]}>
-          <ThemedText styleKey="textColor" style={[style.textStyle, style.labelStyle]}>Card Number</ThemedText>
-          <TextInput placeholder="2365   5225   5255   52522" placeholderTextColor={theme.cardTextColor} style={[style.textContainer, { color: theme.textColor, backgroundColor: theme.profileColor }]} />
-        </View>
+        <CardInput 
+          placeholder={"2365   5225   5255   52522"}
+          onChangeText={onChangeCard}
+          value={cardNumber}
+          errors={errors.cardNumber}
+          label={"Card Number"}
+          secureTextEntry={true} />
       </View>
       <View style={[style.backContainer, style.extraStyle]}>
-        <View style={[style.rightContainer, style.extraContainer]}>
-          <ThemedText styleKey="textColor" style={[style.textStyle, style.labelStyle]}>Expiry Date</ThemedText>
-          <TextInput placeholder="06/2020" placeholderTextColor={theme.cardTextColor} style={[style.textContainer, { color: theme.textColor, backgroundColor: theme.profileColor }]} />
-        </View>
-        <View style={[style.rightContainer, style.extraContainer, {marginRight: 20}]}>
-          <ThemedText styleKey="textColor" style={[style.textStyle, style.labelStyle]}>CVV</ThemedText>
-          <TextInput placeholder="563" placeholderTextColor={theme.cardTextColor} style={[style.textContainer, { color: theme.textColor, backgroundColor: theme.profileColor }]} />
-        </View>
+        <CardInput 
+          placeholder={"06/2020"}
+          onChangeText={onChangeExpiry}
+          value={expiry}
+          errors={errors.expiry}
+          label={"Expiry Date"} />
+        <CardInput 
+          placeholder={"563"}
+          onChangeText={onChangeCvv}
+          value={cvv}
+          errors={errors.cvv}
+          label={"CVV"}
+          specialStyle={{marginRight: 20}} />
       </View>
       <View style={[style.backContainer, style.extraStyle]}>
-        <View style={[style.rightContainer, style.extraContainer]}>
-          <ThemedText styleKey="textColor" style={[style.textStyle, style.labelStyle]}>Name</ThemedText>
-          <TextInput placeholder="Delbert Shibata" placeholderTextColor={theme.cardTextColor} style={[style.textContainer, { color: theme.textColor, backgroundColor: theme.profileColor }]} />
-        </View>
+        <CardInput 
+          placeholder={"Delbert Shibata"}
+          onChangeText={onChangeName}
+          value={name}
+          errors={errors.name}
+          label={"Name"} />
       </View>
       <View style={[style.backContainer, style.extraStyle]}>
         <View style={[style.leftContainer, {marginLeft: 20}]}>
-            <TouchableOpacity onPress={() => {setSelected(!selected)}}>
-                <MaterialIcon name={selected ? "checkbox-marked" : "checkbox-blank-outline"} size={15} color={selected ? theme.appColor: theme.textColor} style={{paddingTop: isIOS() ? 2 : 3}}/>
-            </TouchableOpacity>
+          <TouchableOpacity onPress={() => {setSelected(!selected)}}>
+            <MaterialIcon name={selected ? "checkbox-marked" : "checkbox-blank-outline"} size={15} color={selected ? theme.appColor: theme.textColor} style={{paddingTop: isIOS() ? 2 : 3}}/>
+          </TouchableOpacity>
         </View>
-            <View style={[style.rightContainer, style.extraContainer]}>
-                <ThemedText styleKey="textColor" style={[style.textStyle, style.labelStyle]}>{constants.saveCard}</ThemedText>
-            </View>
+        <View style={[style.rightContainer, style.extraContainer]}>
+          <ThemedText styleKey="textColor" style={[style.textStyle, style.labelStyle]}>{constants.saveCard}</ThemedText>
+        </View>
       </View>
       <RoundButton buttonStyle={style.inputLabel} label="Add Card" buttonColor={theme.appColor} labelStyle={theme.highlightTextColor} onPress={goToPaymentProcess}/>
       </ScrollView>
@@ -105,7 +179,6 @@ interface Style {
   backIcon: ViewStyle;
   extraStyle: ViewStyle;
   extraContainer: ViewStyle;
-  textContainer: ViewStyle;
   textStyle: TextStyle;
   specialText: TextStyle;
   labelStyle: TextStyle;
@@ -179,14 +252,5 @@ const style: Style = StyleSheet.create<Style>({
     justifyContent: 'center',
     width: 350, 
     height: 190,
-  },
-  textContainer: {
-    height: 45,
-    width: '90%',
-    paddingLeft: isIOS() ? 17 : 20, 
-    paddingRight: isIOS() ? 17 : 20, 
-    fontSize: 18,
-    marginLeft: 20,
-    alignSelf: 'flex-start'
   },
 });
