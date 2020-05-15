@@ -132,8 +132,8 @@ android {
         applicationId "com.recraftreactnativedatingapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 16
-        versionName "1.6"
+        versionCode 17
+        versionName "1.7"
     }
     splits {
         abi {
