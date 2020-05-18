@@ -86,7 +86,7 @@ const NewCard: React.FunctionComponent<Props> = ({
   }
 
   const backButton = () => {
-    history.push('/premium')
+    history.push('/process')
   }
 
   const goToPaymentProcess = () => {
